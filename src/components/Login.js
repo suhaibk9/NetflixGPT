@@ -1,17 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
+import { useRef } from 'react';
 import { checkValidData } from '../utils/validate';
-
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
   const [formError, setFormError] = useState('');
-
   const handleToggle = () => {
     setIsSignIn(!isSignIn);
-    setFormError('');
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +24,6 @@ const Login = () => {
       setFormError('');
     }
   };
-
   return (
     <div className="relative min-h-screen bg-black">
       <Header />
@@ -41,7 +38,6 @@ const Login = () => {
         <form
           className="p-8 rounded-lg w-full max-w-md"
           style={{ background: 'rgba(0,0,0,0.7)' }}
-          onSubmit={handleSubmit}
         >
           <h2 className="text-3xl font-bold mb-6 text-white">
             {isSignIn ? 'Sign In' : 'Sign Up'}
@@ -71,12 +67,13 @@ const Login = () => {
           />
           {formError && <div className="mb-4 text-red-500">{formError}</div>}
           <button
+            onClick={handleSubmit}
             type="submit"
             className="w-full py-3 mb-4 bg-red-600 text-white rounded font-semibold hover:bg-red-700"
           >
             {isSignIn ? 'Sign In' : 'Sign Up'}
           </button>
-          <div className="mb-4">
+          <div className=" mb-4">
             {isSignIn ? (
               <>
                 <span
