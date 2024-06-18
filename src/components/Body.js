@@ -20,9 +20,9 @@ const Body = () => {
       element: <Browse />,
     },
     {
-        path: '/account',
-        element: <Account />,
-    }
+      path: '/account',
+      element: <Account />,
+    },
   ]);
   useEffect(() => {
     //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
@@ -38,7 +38,6 @@ const Body = () => {
             photoURL: user.photoURL,
           })
         );
-        
       } else {
         //User is signed out
         dispatch(removeUser());

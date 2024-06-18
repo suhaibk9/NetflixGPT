@@ -2,10 +2,10 @@ export const checkValidData = (email, password, isSignIn, name) => {
   const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(
     email
   );
-  const isPasswordValid = /^(?=.*\d)(?=.*[a-zA-Z]).{5,}$/.test(password);
+  const isPasswordValid = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/.test(password);
   const emailCriteria = "Email should be in the format 'example@example.com'.";
   const passwordCriteria =
-    'Password must be at least 5 characters long and include at least one digit.';
+    'Password must be at least 6 characters long and include at least one digit.';
   const nameCriteria =
     'Name should be 2 to 30 characters long and contain only letters and spaces.';
 

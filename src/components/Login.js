@@ -9,7 +9,10 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 const Login = () => {
+  const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -46,9 +49,19 @@ const Login = () => {
             updateProfile(auth.currentUser, {
               displayName: name,
               photoURL:
-                'https://www.google.com/url?sa=i&url=https%3A%2F%2Fprompti.ai%2Fcool-coder-logo%2F&psig=AOvVaw2pIRU4-0TYck7tArqL1YRx&ust=1718835456349000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOiDp5qX5oYDFQAAAAAdAAAAABAE',
+                'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             })
               .then(() => {
+                //Trying out Direct Update
+                dispatch(
+                  addUser({
+                    uid: user.uid,
+                    email: user.email,
+                    displayName: name,
+                    photoURL:
+                      'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                  })
+                );
                 navigate('/browse');
               })
               .catch((error) => {
@@ -83,6 +96,8 @@ const Login = () => {
               setFormError('User not found.');
             } else if (errorCode === 'auth/invalid-credential') {
               setFormError('Invalid credentials, please try again.');
+            } else if (errorCode === 'auth/weak-password') {
+              setFormError('Password should be at least 6 characters long.');
             } else {
               const fullError = `${errorCode}: ${errorMessage}`;
               setFormError(fullError);
