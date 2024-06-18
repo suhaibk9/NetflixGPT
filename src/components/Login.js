@@ -7,13 +7,16 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
+import { addUser } from '../utils/userSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
   const [formError, setFormError] = useState('');
-
+const navigate = useNavigate();
   const handleToggle = () => {
     if (nameRef.current) nameRef.current.value = '';
     emailRef.current.value = '';
@@ -38,7 +41,6 @@ const Login = () => {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -56,7 +58,7 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
+            navigate('/browse');
           })
           .catch((error) => {
             const errorCode = error.code;
