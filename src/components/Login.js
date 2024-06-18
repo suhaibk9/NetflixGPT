@@ -6,6 +6,7 @@ import { auth } from '../utils/firebase';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
@@ -14,11 +15,14 @@ const Login = () => {
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
   const [formError, setFormError] = useState('');
-const navigate = useNavigate();
-  const handleToggle = () => {
+  const cleanInput = () => {
     if (nameRef.current) nameRef.current.value = '';
     emailRef.current.value = '';
     passwordRef.current.value = '';
+  };
+  const navigate = useNavigate();
+  const handleToggle = () => {
+    cleanInput();
     setFormError('');
     setIsSignIn(!isSignIn);
   };
@@ -39,6 +43,17 @@ const navigate = useNavigate();
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            updateProfile(auth.currentUser, {
+              displayName: name,
+              photoURL: 'https://avatars.githubusercontent.com/u/19365397?v=4',
+            })
+              .then(() => {
+                navigate('/browse');
+              })
+              .catch((error) => {
+                setFormError(error.message);
+              });
+            cleanInput();
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -56,6 +71,7 @@ const navigate = useNavigate();
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
+            cleanInput();
             navigate('/browse');
           })
           .catch((error) => {
@@ -65,7 +81,7 @@ const navigate = useNavigate();
             if (errorCode === 'auth/user-not-found') {
               setFormError('User not found.');
             } else if (errorCode === 'auth/invalid-credential') {
-              setFormError('Invalid credentials, please try again.')
+              setFormError('Invalid credentials, please try again.');
             } else {
               const fullError = `${errorCode}: ${errorMessage}`;
               setFormError(fullError);

@@ -19,15 +19,18 @@
 
 // export default Header;
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { FaCaretDown } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+
 import { removeUser } from '../utils/userSlice';
 
 const Header = () => {
   const navigate = useNavigate();
-
+    const goToAccount = () => {
+    navigate('/account');
+    }
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -59,7 +62,7 @@ const Header = () => {
           className="absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
           style={{ background: 'rgba(0,0,0,0.7)' }}
         >
-          <div className="px-4 py-2 hover:underline cursor-pointer text-white">
+          <div onClick={goToAccount} className="px-4 py-2 hover:underline cursor-pointer text-white">
             Account
           </div>
           <div

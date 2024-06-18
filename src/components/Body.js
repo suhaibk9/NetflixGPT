@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import Account from './Account';
 const Body = () => {
   const dispatch = useDispatch();
   const appRouter = createBrowserRouter([
@@ -18,6 +19,10 @@ const Body = () => {
       path: '/browse',
       element: <Browse />,
     },
+    {
+        path: '/account',
+        element: <Account />,
+    }
   ]);
   useEffect(() => {
     //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
@@ -30,6 +35,7 @@ const Body = () => {
             uid: user.uid,
             email: user.email,
             displayName: user.displayName,
+            photoURL: user.photoURL,
           })
         );
         
