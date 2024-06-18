@@ -9,6 +9,10 @@ const Login = () => {
   const nameRef = useRef(null);
   const [formError, setFormError] = useState('');
   const handleToggle = () => {
+    nameRef.current.value = '';
+    emailRef.current.value = '';
+    passwordRef.current.value = '';
+    setFormError('');
     setIsSignIn(!isSignIn);
   };
 
