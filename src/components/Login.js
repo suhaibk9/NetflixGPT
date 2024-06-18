@@ -45,7 +45,8 @@ const Login = () => {
             const user = userCredential.user;
             updateProfile(auth.currentUser, {
               displayName: name,
-              photoURL: 'https://avatars.githubusercontent.com/u/19365397?v=4',
+              photoURL:
+                'https://www.google.com/url?sa=i&url=https%3A%2F%2Fprompti.ai%2Fcool-coder-logo%2F&psig=AOvVaw2pIRU4-0TYck7tArqL1YRx&ust=1718835456349000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOiDp5qX5oYDFQAAAAAdAAAAABAE',
             })
               .then(() => {
                 navigate('/browse');
