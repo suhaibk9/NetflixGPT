@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import Header from './Header';
 import { useRef } from 'react';
 import { checkValidData } from '../utils/validate';
+import { auth } from '../utils/firebase';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
   const [formError, setFormError] = useState('');
+
   const handleToggle = () => {
-    nameRef.current.value = '';
+    if (nameRef.current) nameRef.current.value = '';
     emailRef.current.value = '';
     passwordRef.current.value = '';
     setFormError('');
@@ -18,6 +24,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormError('');
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const name = nameRef.current ? nameRef.current.value : '';
@@ -26,6 +33,45 @@ const Login = () => {
       setFormError(validationError);
     } else {
       setFormError('');
+      if (!isSignIn) {
+        //Sign Up
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            if (errorCode === 'auth/email-already-in-use') {
+              setFormError('Email already in use.');
+            } else {
+              const fullError = `${errorCode}: ${errorMessage}`;
+              setFormError(fullError);
+            }
+          });
+      } else {
+        //Sign In
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            if (errorCode === 'auth/user-not-found') {
+              setFormError('User not found.');
+            } else if (errorCode === 'auth/invalid-credential') {
+              setFormError('Invalid credentials, please try again.')
+            } else {
+              const fullError = `${errorCode}: ${errorMessage}`;
+              setFormError(fullError);
+            }
+          });
+      }
     }
   };
   return (

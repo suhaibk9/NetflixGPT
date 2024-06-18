@@ -12,7 +12,7 @@ export const checkValidData = (email, password, isSignIn, name) => {
   if (!isEmailValid) {
     return `Email is not valid. ${emailCriteria}`;
   }
-  if (!isPasswordValid) {
+  if (!isSignIn && !isPasswordValid) {
     return `Password is not valid. ${passwordCriteria}`;
   }
   if (!isSignIn) {
