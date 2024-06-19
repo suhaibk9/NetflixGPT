@@ -11,3 +11,7 @@ export const API_OPTIONS = {
     Authorization: `Bearer ${process.env.REACT_APP_READ_ACCESS_TOKEN}`,
   },
 };
+export const POSTER_PATH_ORIGINAL = 'https://image.tmdb.org/t/p/original';
+export const POSTER_PATH_W500 = 'https://image.tmdb.org/t/p/w500';
+export const BACKDROP_PATH_ORIGINAL = 'https://image.tmdb.org/t/p/original';
+export const BACKDROP_PATH_W500 = 'https://image.tmdb.org/t/p/w500';

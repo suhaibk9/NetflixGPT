@@ -9,6 +9,28 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.custom-hover:hover {
-  background: rgba(109,109,110,0.1) !important;
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.group:hover .group-hover\\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\\:scale-110 {
+  transform: scale(1.1);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
