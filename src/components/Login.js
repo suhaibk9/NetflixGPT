@@ -11,6 +11,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { PROFILE_AVATAR } from '../utils/consants';
 const Login = () => {
   const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
@@ -52,8 +53,7 @@ const Login = () => {
             const user = userCredential.user;
             updateProfile(auth.currentUser, {
               displayName: name,
-              photoURL:
-                'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+              photoURL: PROFILE_AVATAR,
             })
               .then(() => {
                 //Trying out Direct Update
@@ -62,8 +62,7 @@ const Login = () => {
                     uid: user.uid,
                     email: user.email,
                     displayName: name,
-                    photoURL:
-                      'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                    photoURL: PROFILE_AVATAR,
                   })
                 );
                 navigate('/browse');

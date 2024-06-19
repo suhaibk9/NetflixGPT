@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header';
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 const Browse = () => {
+  useNowPlayingMovies();
   return (
     <div>
       <Header />
-      <div className="flex flex-col items-center justify-center h-screen bg-black">
-        <h1 className="text-white text-3xl">Browse</h1>
-      </div>
+      <h1>Browse</h1>
     </div>
   );
 };

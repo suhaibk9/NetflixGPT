@@ -8,8 +8,10 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { removeUser, addUser } from '../utils/userSlice';
 import { useLocation } from 'react-router-dom';
+import { ACCOUNT_ICON, NETFLIX_LOGO } from '../utils/consants';
 const Header = () => {
   const location = useLocation();
+  //Will Give you the current location of the page example if you are on /browse it will give you /browse
   console.log('location', location.pathname);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const Header = () => {
   useEffect(() => {
     //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
     //You can say onAuthStateChanged is a useEffect for authentication useEffect(()=>{},[auth])
-    onAuthStateChanged(auth, (user) => {
+    const subscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         //User is signed in
         dispatch(
@@ -57,20 +59,17 @@ const Header = () => {
         // navigate('/');
       }
     });
+    return () => subscribe();
   }, []);
   return (
     <div className="flex justify-between items-center absolute w-full py-2 px-8 bg-gradient-to-b from-black z-10">
-      <img
-        className="w-44"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        alt="Logo"
-      />
+      <img className="w-44" src={NETFLIX_LOGO} alt="Logo" />
       {user && (
         <div className="relative group z-40">
           <div className="flex items-center cursor-pointer">
             <img
               className="w-11 h-11 rounded"
-              src="https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e"
+              src={ACCOUNT_ICON}
               alt="Profile"
             />
             <FaCaretDown className="ml-2 text-white" />
@@ -99,3 +98,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
