@@ -21,12 +21,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import { auth } from '../utils/firebase';
+import { useEffect } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { removeUser } from '../utils/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../utils/firebase';
+
+import { removeUser,addUser } from '../utils/userSlice';
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const goToAccount = () => {
     navigate('/account');
@@ -43,6 +47,28 @@ const Header = () => {
         }
       });
   };
+    useEffect(() => {
+      //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
+      //You can say onAuthStateChanged is a useEffect for authentication useEffect(()=>{},[auth])
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          //User is signed in
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+            })
+          );
+          navigate('/browse');
+        } else {
+          //User is signed out
+          dispatch(removeUser());
+          navigate('/');
+        }
+      });
+    }, []);
   return (
     <div className="flex justify-between items-center absolute w-full py-2 px-8 bg-gradient-to-b from-black z-10">
       <img
