@@ -31,24 +31,31 @@ import React from 'react';
 import MovieList from './MovieList';
 import { useSelector } from 'react-redux';
 const MoviesContainer = () => {
-  const nowPlayingMovies = useSelector( (state) => state.movies?.nowPlayingMovies );
+  const nowPlayingMovies = useSelector(
+    (state) => state.movies?.nowPlayingMovies
+  );
   const popularMovies = useSelector((state) => state.movies?.popularMovies);
   const topRatedMovies = useSelector((state) => state.movies?.topRatedMovies);
-  const upcomingMovies = useSelector((state) => state.movies?.upcomingMovies);
-  if ( !nowPlayingMovies || !popularMovies || !topRatedMovies || !upcomingMovies ) {
+  const upcomingMovies = useSelector((state) => state.movies?.upComingMovies);
+  if (
+    !nowPlayingMovies ||
+    !popularMovies ||
+    !topRatedMovies ||
+    !upcomingMovies
+  ) {
     return null;
   }
-  console.log(
-    'NOW PLAYING MOVIES',
-    nowPlayingMovies,
-    'POPULAR MOVIES',
-    popularMovies,
-    'TOP RATED MOVIES',
-    topRatedMovies,
-    'UPCOMING MOVIES',
-    upcomingMovies
-  );
-  
+  // console.log(
+  //   'NOW PLAYING MOVIES',
+  //   nowPlayingMovies,
+  //   'POPULAR MOVIES',
+  //   popularMovies,
+  //   'TOP RATED MOVIES',
+  //   topRatedMovies,
+  //   'UPCOMING MOVIES',
+  //   upcomingMovies
+  // );|| !topRatedMovies || !upcomingMovies
+
   return (
     <div className=" w-full bg-black ">
       <div className="-mt-52  z-20 relative">

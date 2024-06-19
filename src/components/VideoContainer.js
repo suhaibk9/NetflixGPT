@@ -4,7 +4,7 @@ import VideoBackground from './VideoBackground';
 import VideoTitle from './VideoTitle';
 const VideoContainer = () => {
   const movies = useSelector((state) => state.movies?.nowPlayingMovies);
-  console.log('Movies', movies);
+  // console.log('Movies', movies);
   if (!movies) {
     return;
   }
