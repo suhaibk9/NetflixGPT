@@ -9,7 +9,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,11 @@ const Login = () => {
     setFormError('');
     setIsSignIn(!isSignIn);
   };
-
+  useEffect(() => {
+    if (!useSelector((state) => state.user)) {
+      cleanInput();
+    }
+  }, [useSelector((state) => state.user)]);
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError('');

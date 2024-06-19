@@ -25,7 +25,6 @@ import { auth } from '../utils/firebase';
 import { FaCaretDown } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { removeUser } from '../utils/userSlice';
-
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -35,6 +34,7 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
+        
         navigate('/');
       })
       .catch((error) => {
