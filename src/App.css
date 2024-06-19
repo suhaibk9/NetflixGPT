@@ -8,3 +8,7 @@
   visibility: hidden;
   transition: opacity 0.3s ease-in-out;
 }
+
+.custom-hover:hover {
+  background: rgba(109,109,110,0.1) !important;
+}
