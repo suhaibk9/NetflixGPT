@@ -43,6 +43,7 @@ const VideoBackground = ({ movieId }) => {
             src={`https://www.youtube.com/embed/${trailerId.key}?autoplay=1&controls=0&&rel=0&showinfo=0&disablekb=1&loop=1`}
             allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            autoPlay
             title="Movie Trailer"
           />
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black to-transparent opacity-75"></div>
