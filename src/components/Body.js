@@ -23,26 +23,7 @@ const Body = () => {
       element: <Account />,
     },
   ]);
-//   useEffect(() => {
-//     //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
-//     //You can say onAuthStateChanged is a useEffect for authentication useEffect(()=>{},[auth])
-//     onAuthStateChanged(auth, (user) => {
-//       if (user) {
-//         //User is signed in
-//         dispatch(
-//           addUser({
-//             uid: user.uid,
-//             email: user.email,
-//             displayName: user.displayName,
-//             photoURL: user.photoURL,
-//           })
-//         );
-//       } else {
-//         //User is signed out
-//         dispatch(removeUser());
-//       }
-//     });
-//   }, []);
+
   return (
     <div>
       <RouterProvider router={appRouter} />

@@ -1,23 +1,3 @@
-// import React from 'react';
-
-// const Header = () => {
-//   return (
-//     <div className=" flex justify-between absolute w-full py-2 px-8 bg-gradient-to-b from-black z-10">
-//       <img
-//         className=" w-44 "
-//         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-//         alt="Logo"
-//       />
-//       <div>
-//         <img className='w-11 mt-1 h-11 ' src="https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e" alt/>
-//         <button className='text-white'>(Sign Out)</button>
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default Header;
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
@@ -26,19 +6,21 @@ import { FaCaretDown } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-
-import { removeUser,addUser } from '../utils/userSlice';
+import { removeUser, addUser } from '../utils/userSlice';
+import { useLocation } from 'react-router-dom';
 const Header = () => {
+  const location = useLocation();
+  console.log('location', location.pathname);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const goToAccount = () => {
+    console.log('Navigating to account');
     navigate('/account');
   };
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        
         navigate('/');
       })
       .catch((error) => {
@@ -47,28 +29,35 @@ const Header = () => {
         }
       });
   };
-    useEffect(() => {
-      //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
-      //You can say onAuthStateChanged is a useEffect for authentication useEffect(()=>{},[auth])
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          //User is signed in
-          dispatch(
-            addUser({
-              uid: user.uid,
-              email: user.email,
-              displayName: user.displayName,
-              photoURL: user.photoURL,
-            })
-          );
-          navigate('/browse');
-        } else {
-          //User is signed out
-          dispatch(removeUser());
-          navigate('/');
-        }
-      });
-    }, []);
+  useEffect(() => {
+    if (!user && location.pathname !== '/') {
+      navigate('/');
+    } else if (user && location.pathname === '/') {
+      navigate('/browse');
+    }
+  }, [user, location]);
+  useEffect(() => {
+    //UseEffect will run once and setup once onAuthStateChanged is like an event listener once setup it will listen for changes in authentication.
+    //You can say onAuthStateChanged is a useEffect for authentication useEffect(()=>{},[auth])
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        //User is signed in
+        dispatch(
+          addUser({
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          })
+        );
+        // navigate('/browse');
+      } else {
+        //User is signed out
+        dispatch(removeUser());
+        // navigate('/');
+      }
+    });
+  }, []);
   return (
     <div className="flex justify-between items-center absolute w-full py-2 px-8 bg-gradient-to-b from-black z-10">
       <img

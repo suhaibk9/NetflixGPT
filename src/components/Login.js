@@ -29,11 +29,11 @@ const Login = () => {
     setFormError('');
     setIsSignIn(!isSignIn);
   };
-//   useEffect(() => {
-//     if (!useSelector((state) => state.user)) {
-//       cleanInput();
-//     }
-//   }, [useSelector((state) => state.user)]);
+  //   useEffect(() => {
+  //     if (!useSelector((state) => state.user)) {
+  //       cleanInput();
+  //     }
+  //   }, [useSelector((state) => state.user)]);
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError('');
