@@ -16,7 +16,7 @@ const VideoBackground = ({ movieId }) => {
             frameBorder="0"
             allow="accelerometer; autoplay; fullscreen; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             title="Movie Trailer"
-            allowFullScreen
+
           />
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black to-transparent opacity-55"></div>
         </>
