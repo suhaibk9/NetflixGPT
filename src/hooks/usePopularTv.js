@@ -25,7 +25,7 @@ const usePopularTv = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      console.log("Popular TV", airJson.results);
+      
       dispatch(addPopularTv(airJson.results));
     };
     onAir();

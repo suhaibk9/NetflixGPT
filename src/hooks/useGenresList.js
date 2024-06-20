@@ -14,7 +14,7 @@ const useGenresList = () => {
         const data = await response.json();
         if (data.genres) {
           dispatch(updateGenresList(data.genres));
-        //  console.log('Genres:', data.genres);
+        
         }
       } catch (error) {
         console.error('Error fetching genres:', error);

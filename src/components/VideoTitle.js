@@ -1,8 +1,19 @@
-
 import React from 'react';
 import { FaPlay, FaInfoCircle } from 'react-icons/fa';
-
-const VideoTitle = ({ title, overview }) => {
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+const VideoTitle = ({ title, overview}) => {
+const location = useLocation();
+let trailerId;
+const movieTrailer = useSelector((state) => state.movies.trailerVideo);
+const tvTrailer= useSelector((state) => state.tv.tvTrailerId);
+if(location.pathname==='/browse')trailerId=movieTrailer;
+else trailerId=tvTrailer;
+ const handlePlayTrailer = () => {
+   if (trailerId && trailerId.key) {
+     window.location.href = `https://www.youtube.com/embed/${trailerId.key}?autoplay=1&controls=1`;
+   }
+ };
   return (
     <div
       style={{ userSelect: 'none' }}
@@ -12,6 +23,7 @@ const VideoTitle = ({ title, overview }) => {
       <p className="text-lg md:text-xl mb-6">{overview}</p>
       <div className="flex space-x-4">
         <button
+          onClick={handlePlayTrailer}
           style={{ borderRadius: '4px' }}
           className="bg-white text-black py-3 px-5  font-semibold flex items-center hover:bg-gray-200 "
         >

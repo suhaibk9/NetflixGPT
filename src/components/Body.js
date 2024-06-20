@@ -5,6 +5,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import TVShows from './TVShows';
 import ErrorPage from './ErrorPage';
+import GPTSearch from './GPTSearch';
 import { useDispatch } from 'react-redux';
 
 import Account from './Account';
@@ -29,7 +30,11 @@ const Body = () => {
       element: <Account />,
     },
     {
-      path: '*', 
+      path: '/gptsearch',
+      element: <GPTSearch />,
+    },
+    {
+      path: '*',
       element: <ErrorPage errorCode="404" />,
     },
   ]);

@@ -69,6 +69,11 @@
 // };
 
 // export default VideoContainer;
+// airingTodayTv: null,
+//     onTheAirTv: null,
+//     topRatedTv: null,
+//     popularTv: null,
+//     tvTrailerId: null,
 import React from 'react';
 import { useSelector } from 'react-redux';
 import VideoBackground from './VideoBackground';
@@ -78,7 +83,7 @@ import { useLocation } from 'react-router-dom';
 const VideoContainer = () => {
   const location = useLocation();
   const movies = useSelector((state) => state.movies?.nowPlayingMovies);
-  const tvShow = useSelector((state) => state.tv?.airingTodayTv);
+  const tvShow = useSelector((state) => state.tv?.topRatedTv);
   const isLocationBrowse = location.pathname === '/browse';
 
   const mediaType = isLocationBrowse ? movies : tvShow;
@@ -96,6 +101,7 @@ const VideoContainer = () => {
           isLocationBrowse ? mainType.original_title : mainType.original_name
         }
         overview={mainType.overview}
+        
       />
       <VideoBackground movieId={mainType.id} />
     </div>

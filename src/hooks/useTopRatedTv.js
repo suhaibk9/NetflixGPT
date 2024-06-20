@@ -27,7 +27,6 @@ const useTopRatedTv = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      console.log("Top Rated TV", airJson.results);
       dispatch(addTopRatedTv(airJson.results));
     };
     onAir();

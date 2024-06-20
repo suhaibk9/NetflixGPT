@@ -12,7 +12,6 @@ const useUpcomingMovies = () => {
         API_OPTIONS
       );
       const upComingMoviesJSON = await upcomingPromise.json();
-    //   console.log('Upcoming Movies', upComingMoviesJSON.results);
       dispatch(addUpcomingMovies(upComingMoviesJSON.results));
     };
     upComingCall();

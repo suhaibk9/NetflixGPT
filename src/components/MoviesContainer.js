@@ -1,31 +1,3 @@
-// import React from 'react';
-// import MovieList from './MovieList';
-// import { useSelector } from 'react-redux';
-// const MoviesContainer = () => {
-//   const movies = useSelector((state) => state.movies.nowPlayingMovies);
-//   if(!movies){
-//     return null;
-//   }
-//   console.log("MOVIES LOADING IN CONTAINER", movies);
-//   return (
-//     <div className=" w-full bg-black ">
-//       <div className="relative top-[-200px]  z-20000000">
-//         <MovieList title={'Now Playing'} movies={movies} />
-//       </div>
-//       <div className="relative top-[-200px]  z-20000000">
-//         <MovieList title={'Now Playing'} movies={movies} />
-//       </div>
-//       <div className="relative top-[-200px]  z-20000000">
-//         <MovieList title={'Now Playing'} movies={movies} />
-//       </div>
-//       <div className="relative top-[-200px]  z-20000000">
-//         <MovieList title={'Now Playing'} movies={movies} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MoviesContainer;
 
 import React from 'react';
 import MovieList from './MovieList';
@@ -47,7 +19,10 @@ const MoviesContainer = () => {
   }
   return (
     <div className=" w-full bg-black ">
-      <div className="-mt-52  z-20 relative">
+      {/* <div className="-mt-52  z-20 relative">
+        <MovieList title={'Now Playing'} movies={nowPlayingMovies} />
+      </div> */}
+      <div className="-mt-[9rem]  z-20 relative">
         <MovieList title={'Now Playing'} movies={nowPlayingMovies} />
       </div>
       <MovieList title={'Popular Movies'} movies={popularMovies} />

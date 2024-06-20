@@ -11,7 +11,7 @@ const useAiringToday = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      console.log('Airing Today TV', airJson.results);
+      
       dispatch(addAiringTodayTv(airJson.results));
     };
     airToday();

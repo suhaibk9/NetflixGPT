@@ -75,7 +75,6 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
             if (errorCode === 'auth/email-already-in-use') {
               setFormError('Email already in use.');
             } else {
@@ -94,7 +93,6 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
             if (errorCode === 'auth/user-not-found') {
               setFormError('User not found.');
             } else if (errorCode === 'auth/invalid-credential') {

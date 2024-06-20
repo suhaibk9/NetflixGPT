@@ -28,7 +28,7 @@ const useOnTheAirTv = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      console.log("On Air TV",airJson.results);
+      
       dispatch(addOnTheAirTv(airJson.results));
     };
     onAir();
