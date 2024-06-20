@@ -4,6 +4,8 @@ export const ACCOUNT_ICON =
   'https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e';
 export const PROFILE_AVATAR =
   'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+export const ERROR_PAGE_IMAGE =
+  'https://assets.nflxext.com/ffe/siteui/pages/errors/bg-lost-in-space.png';
 export const API_OPTIONS = {
   method: 'GET',
   headers: {

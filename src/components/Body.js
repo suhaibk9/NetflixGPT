@@ -4,6 +4,7 @@ import Browse from './Browse';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import TVShows from './TVShows';
+import ErrorPage from './ErrorPage';
 import { useDispatch } from 'react-redux';
 
 import Account from './Account';
@@ -26,6 +27,10 @@ const Body = () => {
     {
       path: '/account',
       element: <Account />,
+    },
+    {
+      path: '*', 
+      element: <ErrorPage errorCode="404" />,
     },
   ]);
 
