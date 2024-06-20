@@ -1,6 +1,8 @@
 import React from 'react';
 
 const GPTSearchResults = () => {
+  
+
   return (
     <div className="relative z-10 mt-10">
       <div className="container mx-auto px-4">

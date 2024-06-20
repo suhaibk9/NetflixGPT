@@ -1,35 +1,35 @@
 export const lang = {
   en: {
     search: 'Explore',
-    heading: 'Stargaze the Best Films and TV Shows with AI Navigation',
-    gptSearchPlaceholder: 'Embark on your next cinematic journey...',
+    heading: 'Stargaze the Best Films with AI Navigation',
+    gptSearchPlaceholder: 'Set off on a galactic movie quest...',
   },
   hi: {
     search: 'खोजें',
-    heading: 'एआई नेविगेशन के साथ सर्वश्रेष्ठ फिल्में और टीवी शोज़ को देखें',
-    gptSearchPlaceholder: 'अपनी अगली सिनेमेटिक यात्रा पर अभियान करें...',
+    heading: 'एआई नेविगेशन के साथ सर्वश्रेष्ठ फिल्में देखें',
+    gptSearchPlaceholder: 'एक अद्वितीय फिल्म की खोज पर निकलें...',
   },
   esp: {
     search: 'Explorar',
     heading:
-      'Contempla las mejores películas y programas de televisión con navegación de IA',
-    gptSearchPlaceholder: 'Emprende tu próximo viaje cinematográfico...',
+      'Admira las mejores películas y programas de televisión con la navegación de IA',
+    gptSearchPlaceholder: 'Emprende tu próxima aventura cinematográfica...',
   },
   fr: {
     search: 'Explorer',
     heading:
-      'Admirez les meilleurs films et émissions de télévision avec la navigation IA',
+      'Découvrez les meilleurs films et émissions de télévision avec la navigation IA',
     gptSearchPlaceholder:
-      'Embarquez pour votre prochain voyage cinématographique...',
+      'Partez à la découverte de votre prochaine aventure cinématographique...',
   },
   de: {
     search: 'Erkunden',
-    heading: 'Beste Filme und TV-Shows mit KI-Navigation betrachten',
-    gptSearchPlaceholder: 'Begib dich auf deine nächste filmische Reise...',
+    heading: 'Beste Filme und Serien mit KI-Navigation erkunden',
+    gptSearchPlaceholder: 'Begib dich auf eine galaktische Filmquest...',
   },
   ch: {
     search: '探索',
-    heading: '通过AI导航查看最佳电影和电视节目',
-    gptSearchPlaceholder: '踏上你的下一个电影之旅...',
+    heading: '使用AI导航查看最佳电影',
+    gptSearchPlaceholder: '开始一场银河电影探险...',
   },
 };

@@ -52,7 +52,8 @@ const MovieCard = ({ movie }) => {
         />
         <div className=" absolute bottom-0 p-1 left-0 w-full h-[50%]  bg-black bg-opacity-80">
           <h3 className="text-white text-lg font-bold">
-            {location.pathname === '/browse'
+            {location.pathname === '/browse' ||
+            location.pathname === '/gptsearch'
               ? movie.title
               : movie.original_name}
           </h3>
