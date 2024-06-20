@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import { FaUserCircle } from 'react-icons/fa';
 import { ClipLoader } from 'react-spinners';
+import { FaArrowLeft } from 'react-icons/fa';
 const Account = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -33,8 +34,9 @@ const Account = () => {
         <div className="w-1/4 flex items-center justify-center p-4">
           <button
             onClick={handleBackToNetflix}
-            className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300"
+            className="bg-red-600 text-white py-2 px-4 rounded flex items-center hover:bg-red-700 transition duration-300"
           >
+            <FaArrowLeft className="mr-2" />
             Back To Netflix
           </button>
         </div>

@@ -32,4 +32,9 @@ export const lang = {
     heading: '使用AI导航查看最佳电影',
     gptSearchPlaceholder: '开始一场银河电影探险...',
   },
+  ur:{
+    search:'تلاش کری    ',
+    heading:'ای اے نیویگیشن کے ساتھ بہترین فلمیں دیکھیں',
+    gptSearchPlaceholder:'ایک گیلاکٹک فلم کی تلاش پر نکلیں...'
+  }
 };

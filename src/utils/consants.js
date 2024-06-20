@@ -29,4 +29,5 @@ export const LANGUAGES = [
   { id: 'de', name: 'German' },
   { id: 'hi', name: 'Hindi' },
   { id: 'ch', name: 'Chinese' },
+  {id:'ur',name:'Urdu'},
 ];

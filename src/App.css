@@ -40,3 +40,23 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Shimmer */
+shimmer-card {
+  @apply w-64 h-72 m-5 bg-gray-200 relative overflow-hidden rounded-lg;
+}
+
+.shimmer-card::after {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

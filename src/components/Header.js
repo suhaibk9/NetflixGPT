@@ -142,7 +142,7 @@ const Header = () => {
             onClick={() => navigate('/browse')}
           />
         </Link>
-        {user && !isGptSearch && (
+        {user && location.pathname !== '/account' && !isGptSearch && (
           <div className="flex space-x-4 ml-10">
             <button
               onClick={() => navigate('/browse')}
@@ -182,13 +182,14 @@ const Header = () => {
               />
             </div>
           )}
-          <button
-            onClick={handleGptSearchClick}
-            className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
-          >
-            {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
-          </button>
-
+          {location.pathname !== '/account' && (
+            <button
+              onClick={handleGptSearchClick}
+              className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
+            >
+              {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
+            </button>
+          )}
           <div className="relative group z-40">
             <div className="flex items-center cursor-pointer">
               <img
