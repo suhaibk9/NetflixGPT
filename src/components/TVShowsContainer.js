@@ -10,7 +10,7 @@ const TVShowsContainer = () => {
 
   return (
     <div className=" w-full bg-black ">
-      <div className="-mt-52  z-20 relative">
+      <div className="-mt-[9rem]  z-20 relative">
         <MovieList title={'Airing Today'} movies={airingTodayTv} />
       </div>
       <MovieList title={'On The Air'} movies={onTheAirTv} />
