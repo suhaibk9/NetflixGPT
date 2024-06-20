@@ -11,7 +11,7 @@ const usePopularMovies = () => {
         API_OPTIONS
       );
       const popularMoviesJson = await popularPromise.json();
-    //   console.log('Now Playing Movies', popularMoviesJson.results);
+    //  console.log('Now Playing Movies', popularMoviesJson.results);
       dispatch(addPopularMovies(popularMoviesJson.results));
     };
     popularMovies();

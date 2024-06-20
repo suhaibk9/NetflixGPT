@@ -3,13 +3,12 @@ import Login from './Login';
 import Browse from './Browse';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
-
+import TVShows from './TVShows';
 import { useDispatch } from 'react-redux';
 
 import Account from './Account';
 
 const Body = () => {
-
   const dispatch = useDispatch();
   const appRouter = createBrowserRouter([
     {
@@ -19,6 +18,10 @@ const Body = () => {
     {
       path: '/browse',
       element: <Browse />,
+    },
+    {
+      path: '/tvshows',
+      element: <TVShows />,
     },
     {
       path: '/account',

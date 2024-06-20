@@ -16,20 +16,20 @@ import {
   POSTER_PATH_ORIGINAL,
   BACKDROP_PATH_ORIGINAL,
 } from '../utils/consants';
-
+import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const MovieCard = ({ movie }) => {
+  const location = useLocation();
   const genres = useSelector((state) => state.genres);
   if (!genres) return null;
   let genreNames = [];
   for (let i = 0; i < movie.genre_ids.length; i++) {
     const match = genres.find((genre) => genre.id === movie.genre_ids[i]);
     if (match) {
-      if(match.name === "Science Fiction"){
-        genreNames.push("Sci-Fi");
-      }
-      else{
+      if (match.name === 'Science Fiction') {
+        genreNames.push('Sci-Fi');
+      } else {
         genreNames.push(match.name);
       }
     }
@@ -51,7 +51,11 @@ const MovieCard = ({ movie }) => {
           className="w-full h-[50%] object-cover"
         />
         <div className=" absolute bottom-0 p-1 left-0 w-full h-[50%]  bg-black bg-opacity-80">
-          <h3 className="text-white text-lg font-bold">{movie.title}</h3>
+          <h3 className="text-white text-lg font-bold">
+            {location.pathname === '/browse'
+              ? movie.title
+              : movie.original_name}
+          </h3>
           <p className="text-gray-300 text-sm line-clamp-2">{movie.overview}</p>
           <div className="text-gray-400 text-sm mt-2">
             {genreNames.join(' • ')}

@@ -53,13 +53,22 @@
 // };
 
 // export default VideoBackground;
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import useMovieTrailer from '../hooks/useMovieTrailer';
-
+import { useLocation } from 'react-router-dom';
 const VideoBackground = ({ movieId }) => {
+  const location=useLocation();
   useMovieTrailer(movieId);
-  const trailerId = useSelector((state) => state.movies.trailerVideo);
+  const movieTrailer = useSelector( (state) => state.movies.trailerVideo );
+  const showTrailer= useSelector((state) => state.tv.tvTrailerId);
+  let trailerId;
+  if(location.pathname==='/browse'){
+    trailerId=movieTrailer;
+  }
+  else{
+    trailerId=showTrailer;
+  }
   //fixed top-0 left-0
   //
   return (
