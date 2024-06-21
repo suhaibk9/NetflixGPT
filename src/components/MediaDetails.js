@@ -19,7 +19,7 @@ const MediaDetails = () => {
   if ( !media) {
     return <div>Loading...</div>;
   }
-  let genreNames = media.genres.map((genre) => genre.name);
+  let genreNames = media?.genres?.map((genre) => genre.name);
   return (
     <div>
       <Header />

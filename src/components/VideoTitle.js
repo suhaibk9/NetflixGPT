@@ -1,19 +1,26 @@
 import React from 'react';
 import { FaPlay, FaInfoCircle } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-const VideoTitle = ({ title, overview}) => {
-const location = useLocation();
-let trailerId;
-const movieTrailer = useSelector((state) => state.movies.trailerVideo);
-const tvTrailer= useSelector((state) => state.tv.tvTrailerId);
-if(location.pathname==='/browse')trailerId=movieTrailer;
-else trailerId=tvTrailer;
- const handlePlayTrailer = () => {
-   if (trailerId && trailerId.key) {
-     window.location.href = `https://www.youtube.com/embed/${trailerId.key}?autoplay=1&controls=1`;
-   }
- };
+const VideoTitle = ({ id, title, overview }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  let trailerId;
+  const movieTrailer = useSelector((state) => state.movies.trailerVideo);
+  const tvTrailer = useSelector((state) => state.tv.tvTrailerId);
+  const isMovie = location.pathname.includes('/browse');
+  if (location.pathname === '/browse') {
+    trailerId = movieTrailer;
+  } else trailerId = tvTrailer;
+  const handlePlayTrailer = () => {
+    if (trailerId && trailerId.key) {
+      window.location.href = `https://www.youtube.com/embed/${trailerId.key}?autoplay=1&controls=1`;
+    }
+  };
+  const handleMoreInfo = () => {
+    navigate(`/${isMovie ? 'movie' : 'tv'}/${id}`);
+  };
   return (
     <div
       style={{ userSelect: 'none' }}
@@ -31,6 +38,7 @@ else trailerId=tvTrailer;
           Play
         </button>
         <button
+          onClick={handleMoreInfo}
           style={{
             borderRadius: '4px',
           }}

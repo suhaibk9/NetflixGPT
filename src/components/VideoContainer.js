@@ -96,14 +96,17 @@ const VideoContainer = () => {
 
   return (
     <div>
+      
       <VideoTitle
+      key={mainType.id}
+      id={mainType.id}
         title={
           isLocationBrowse ? mainType.original_title : mainType.original_name
         }
         overview={mainType.overview}
         
       />
-      <VideoBackground movieId={mainType.id} />
+      <VideoBackground key={mainType.id} movieId={mainType.id} />
     </div>
   );
 };
