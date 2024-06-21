@@ -19,7 +19,7 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   const isGptSearch = useSelector((state) => state.gpt.isGptSearch);
   const selectedLang = useSelector((state) => state.config.lang);
-
+if(location.pathname === '/' && user)navigate('/browse')
   const goToAccount = () => {
     navigate('/account');
   };
@@ -34,13 +34,13 @@ const Header = () => {
       });
   };
 
-  useEffect(() => {
-    if (!user && location.pathname !== '/') {
-      navigate('/');
-    } else if (user && location.pathname === '/') {
-      navigate('/browse');
-    }
-  }, [user, location]);
+  // useEffect(() => {
+  //   if (!user && location.pathname !== '/') {
+  //     navigate('/');
+  //   } else if (user && location.pathname === '/') {
+  //     navigate('/browse');
+  //   }
+  // }, [user, location]);
 
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, (user) => {
@@ -53,8 +53,10 @@ const Header = () => {
             photoURL: user.photoURL,
           })
         );
+        
       } else {
         dispatch(removeUser());
+         navigate('/');
       }
     });
     return () => subscribe();
@@ -182,14 +184,16 @@ const Header = () => {
               />
             </div>
           )}
-          {location.pathname !== '/account' && (
-            <button
-              onClick={handleGptSearchClick}
-              className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
-            >
-              {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
-            </button>
-          )}
+          {location.pathname !== '/account' &&
+            !location.pathname.includes('/movie') &&
+            !location.pathname.includes('/tv') && (
+              <button
+                onClick={handleGptSearchClick}
+                className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
+              >
+                {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
+              </button>
+            )}
           <div className="relative group z-40">
             <div className="flex items-center cursor-pointer">
               <img

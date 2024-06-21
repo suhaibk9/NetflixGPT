@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 import {
   POSTER_PATH_ORIGINAL,
   BACKDROP_PATH_ORIGINAL,
@@ -17,7 +18,11 @@ const MediaDetails = () => {
   const media = useSelector((state) => state.media.media);
   const trailerId = useSelector((state) => state.media.trailerId);
   if ( !media) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+        <ClipLoader color="#ffffff" size={50} />
+      </div>
+    );
   }
   let genreNames = media?.genres?.map((genre) => genre.name);
   return (
