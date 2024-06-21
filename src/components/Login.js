@@ -119,7 +119,7 @@ const Login = () => {
           className="object-cover w-full h-full"
         />
       </div>
-      <div className="flex justify-center items-center min-h-screen relative z-10">
+      <div className="flex justify-center items-center min-h-screen w-full relative z-10">
         <form
           className="p-8 rounded-lg w-full max-w-md"
           style={{ background: 'rgba(0,0,0,0.7)' }}

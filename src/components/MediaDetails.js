@@ -34,9 +34,8 @@ const MediaDetails = () => {
           <div className="flex flex-col   md:flex-row mt-20 md:0 mb-8 w-full max-w-6xl">
             <img
               src={`${POSTER_PATH_ORIGINAL}${media.poster_path}`}
-              className="ml-8 flex-1"
               alt={isMovie ? media.title : media.name}
-              className="w-80 h-auto rounded-lg shadow-lg object-cover"
+              className="w-80 ml-8  h-auto rounded-lg shadow-lg object-cover"
             />
             <div className="ml-8 mt-2 md:mt-0 flex-1">
               <h1 className="text-4xl font-bold mb-4">
