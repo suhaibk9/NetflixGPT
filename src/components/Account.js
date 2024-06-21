@@ -94,7 +94,7 @@
 // export default Account;
 import useClearGPT from '../utils/useClearGPT';
 
-import React, { useEffect ,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
@@ -105,24 +105,25 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { addUser, removeUser } from '../utils/userSlice';
+import { LOGIN_PAGE_IMAGE } from '../utils/consants';
 
 const Account = () => {
   useClearGPT();
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-    const [isBigScreen, setIsBigScreen] = useState(window.innerWidth >= 768);
+  const [isBigScreen, setIsBigScreen] = useState(window.innerWidth >= 768);
 
-    useEffect(() => {
-      const handleResize = () => {
-        setIsBigScreen(window.innerWidth >= 768);
-      };
-      window.addEventListener('resize', handleResize);
-      handleResize();
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsBigScreen(window.innerWidth >= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -157,7 +158,27 @@ const Account = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div
+      className="min-h-screen text-white bg-black opacity-90"
+      style={{
+        position: 'relative',
+        backgroundImage: `url(${LOGIN_PAGE_IMAGE})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'black',
+          opacity: 0.8,
+          zIndex: -1, 
+        }}
+      ></div>
       <Header />
       <div className="flex flex-col md:flex-row min-h-screen pt-20 ">
         <div className="w-3/5  md:w-1/4 self-center md:self-auto  md:mt-0 flex items-center justify-center p-4">

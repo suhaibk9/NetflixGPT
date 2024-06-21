@@ -80,12 +80,12 @@ const GPTSearchBar = () => {
         >
           {lang[language].heading}
         </h1>
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 px-1 md:px-0">
           <input
             ref={inputRef}
             type="text"
             placeholder={lang[language].gptSearchPlaceholder}
-            className="px-4 py-3 w-full max-w-[90%] md:max-w-[40rem] text-black text-lg rounded-l-md focus:outline-none transition-all duration-300 border-2 border-transparent focus:border-black"
+            className="px-4 py-3 md:w-[40rem] w-[70%]  text-black text-lg rounded-l-md focus:outline-none transition-all duration-300 border-2 border-transparent focus:border-black"
             onFocus={() => setIsTyping(true)}
             onBlur={() => setIsTyping(false)}
           />
