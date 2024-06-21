@@ -16,7 +16,7 @@ const MediaDetails = () => {
   useMediaDetails(id, isMovie);
   const media = useSelector((state) => state.media.media);
   const trailerId = useSelector((state) => state.media.trailerId);
-  if (!trailerId || !media) {
+  if ( !media) {
     return <div>Loading...</div>;
   }
   let genreNames = media.genres.map((genre) => genre.name);
