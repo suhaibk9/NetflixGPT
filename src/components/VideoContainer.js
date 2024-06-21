@@ -95,7 +95,7 @@ const VideoContainer = () => {
   const mainType = mediaType[2];
 
   return (
-    <div className='w-screen'>
+    <div >
       
       <VideoTitle
       

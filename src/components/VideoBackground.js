@@ -109,18 +109,18 @@ const VideoBackground = ({ movieId }) => {
   //fixed top-0 left-0
   //
   return (
-    <div className=" w-screen    overflow-hidden ">
+    <div className=" w-full    overflow-hidden ">
       {trailerId && trailerId.key && (
         <>
           <iframe
-            className="scale-150 h-[110vh] w-screen aspect-video"
+            className="scale-150 h-[110vh] w-full aspect-video"
             src={`https://www.youtube.com/embed/${trailerId.key}?autoplay=1&mute=1&controls=0&loop=1&iv_load_policy=3&rel=0&playsinline=1&fs=1&disablekb=1&playlist=${trailerId.key}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             autoPlay
           />
-          <div className="absolute top-0 left-0 w-screen h-[110vh]  bg-gradient-to-r from-black to-transparent opacity-75"></div>
+          <div className="absolute top-0 left-0 w-full h-[110vh]  bg-gradient-to-r from-black to-transparent opacity-75"></div>
         </>
       )}
     </div>
