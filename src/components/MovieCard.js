@@ -18,7 +18,7 @@ import {
 } from '../utils/consants';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import {Link} from 'react-router-dom';
 const MovieCard = ({ movie }) => {
   const location = useLocation();
   const genres = useSelector((state) => state.genres);
@@ -37,7 +37,11 @@ const MovieCard = ({ movie }) => {
       break;
     }
   }
+    const isMovie =
+      location.pathname.includes('/browse') ||
+      location.pathname.includes('/gptsearch');
   return (
+     <Link to={`/${isMovie ? 'movie' : 'tv'}/${movie.id}`}>
     <div className="relative group w-48 p-1 mx-1 overflow-hidden  cursor-pointer">
       <img
         alt="Movie Poster"
@@ -64,6 +68,7 @@ const MovieCard = ({ movie }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

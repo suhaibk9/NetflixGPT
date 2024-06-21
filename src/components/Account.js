@@ -5,10 +5,11 @@ import Header from './Header';
 import { FaUserCircle } from 'react-icons/fa';
 import { ClipLoader } from 'react-spinners';
 import { FaArrowLeft } from 'react-icons/fa';
+import useClearGPT from '../utils/useClearGPT';
 const Account = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
-
+useClearGPT();
   const handleBackToNetflix = () => {
     navigate('/browse');
   };

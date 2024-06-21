@@ -5,6 +5,7 @@ import tvReducer from './tvSlice.js';
 import genresReducer from './genresSlice';
 import gptReducer from './gptSlice';
 import configReducer from './configSlice';
+import mediaReducer from './mediaSlice';
 const appStore = configureStore({
   reducer: {
     user: userReducer,
@@ -13,6 +14,7 @@ const appStore = configureStore({
     tv: tvReducer,
     gpt: gptReducer,
     config: configReducer,
+    media: mediaReducer,
   },
 });
 export default appStore;

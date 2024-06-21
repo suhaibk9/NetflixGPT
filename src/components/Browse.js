@@ -7,8 +7,9 @@ import useGenresList from '../hooks/useGenresList';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
-
+import useClearGPT from '../utils/useClearGPT';
 const Browse = () => {
+    useClearGPT();
     useNowPlayingMovies();
     usePopularMovies();
     useTopRatedMovies();

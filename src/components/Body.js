@@ -7,7 +7,7 @@ import TVShows from './TVShows';
 import ErrorPage from './ErrorPage';
 import GPTSearch from './GPTSearch';
 import { useDispatch } from 'react-redux';
-
+import MediaDetails from './MediaDetails';
 import Account from './Account';
 
 const Body = () => {
@@ -34,8 +34,16 @@ const Body = () => {
       element: <GPTSearch />,
     },
     {
+      path: '/movie/:id',
+      element: <MediaDetails />,
+    },
+    {
+      path: '/tv/:id',
+      element: <MediaDetails />,
+    },
+    {
       path: '*',
-      element: <ErrorPage errorCode="404" />,
+      element: <ErrorPage />,
     },
   ]);
 

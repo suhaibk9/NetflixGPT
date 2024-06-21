@@ -9,6 +9,7 @@ import openai from '../utils/openai';
 import {
   setGptArray,
   setGptSearchClicked,
+  setActualQuery,
   setGptSearchResults,
 } from '../utils/gptSlice';
 
@@ -65,6 +66,7 @@ const GPTSearchBar = () => {
   const handleGPTExplore = () => {
     dispatch(setGptSearchClicked(true));
     const query = inputRef.current.value;
+    dispatch(setActualQuery(query));
     openAIAPICall(query);
   };
 
