@@ -35,7 +35,7 @@ const MediaDetails = () => {
             <img
               src={`${POSTER_PATH_ORIGINAL}${media.poster_path}`}
               alt={isMovie ? media.title : media.name}
-              className="w-80 ml-8  h-auto rounded-lg shadow-lg object-cover"
+              className="w-3/4 md:w-80 ml-8  h-auto rounded-lg shadow-lg object-cover"
             />
             <div className="ml-8 mt-2 md:mt-0 flex-1">
               <h1 className="text-4xl font-bold mb-4">
@@ -69,7 +69,7 @@ const MediaDetails = () => {
             <h2 className="text-3xl mb-4">Trailer</h2>
             {trailerId ? (
               <iframe
-                className="w-3/4 h-96 rounded-lg shadow-lg mb-8"
+                className="w-3/4 h-98 rounded-lg shadow-lg mb-8"
                 src={`https://www.youtube.com/embed/${trailerId}`}
                 title={`${isMovie ? media.title : media.name} Trailer`}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
