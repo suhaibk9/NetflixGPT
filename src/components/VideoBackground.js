@@ -109,7 +109,7 @@ const VideoBackground = ({ movieId }) => {
   //fixed top-0 left-0
   //
   return (
-    <div className=" w-full    overflow-hidden ">
+    <div className=" w-full overflow-hidden ">
       {trailerId && trailerId.key && (
         <>
           <iframe

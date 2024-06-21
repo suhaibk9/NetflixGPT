@@ -16,7 +16,7 @@ const Browse = () => {
     useUpcomingMovies();
     useGenresList();
   return (
-    <div className='w-full'>
+    <div className="w-screen ">
       <Header />
       {/* Video Container */}
       <VideoContainer />
