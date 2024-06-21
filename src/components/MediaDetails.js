@@ -17,8 +17,8 @@ const MediaDetails = () => {
   useMediaDetails(id, isMovie);
   const media = useSelector((state) => state.media.media);
   const trailerId = useSelector((state) => state.media.trailerId);
-  console.log("Trailer ID OF MOVIE",trailerId);
-  if ( !media) {
+  console.log('Trailer ID OF MOVIE', trailerId);
+  if (!media) {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
         <ClipLoader color="#ffffff" size={50} />
@@ -31,9 +31,10 @@ const MediaDetails = () => {
       <Header />
       <div className="bg-black min-h-screen text-white pt-20">
         <div className="p-6 flex flex-col items-center">
-          <div className="flex mb-8 w-full max-w-6xl">
+          <div className="flex flex-col   md:flex-row mt-20 md:0 mb-8 w-full max-w-6xl">
             <img
               src={`${POSTER_PATH_ORIGINAL}${media.poster_path}`}
+              className="ml-8 flex-1"
               alt={isMovie ? media.title : media.name}
               className="w-80 h-auto rounded-lg shadow-lg object-cover"
             />
