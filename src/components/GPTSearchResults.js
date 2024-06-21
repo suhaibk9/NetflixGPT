@@ -39,7 +39,7 @@ const GPTSearchResults = () => {
   const actualQuery = useSelector((state) => state.gpt.actualQuery);
   if (click) {
     return (
-      <div className="relative z-11  bg-black opacity-76 mx-5 mb-5">
+      <div className="relative z-11  bg-black opacity-75 mx-5 mb-5">
         <div className="flex flex-wrap justify-center p-5">
           {Array.from({ length: 20 }).map((_, index) => (
             <ShimmerCard key={index} />
@@ -50,7 +50,7 @@ const GPTSearchResults = () => {
   }
   // bg-black opacity-50
   return (
-    <div className=" relative z-11  bg-black opacity-76 mx-5 mb-5">
+    <div className=" relative z-11  bg-black opacity-75 mx-5 mb-5">
     
       {gptSearchResults && gptArray ? (
         gptArray.map((gpt, idx) => (
