@@ -1,6 +1,6 @@
 # NetflixGPT
 
-NetflixGPT is a Netflix clone that fetches TV shows and movies from The TMDB API. It leverages Firebase for authentication to store user names and passwords, and uses React Router DOM for routing. The app includes React Icons and React-Select for an enhanced UI/UX experience.
+NetflixGPT is a Netflix clone that fetches TV shows and movies from The TMDB API. It leverages Firebase for authentication to store user names and passwords and uses React Router DOM for routing. The app includes React Icons and React-Select for an enhanced UI/UX experience.
 
 ## Why GPT in NetflixGPT?
 
@@ -33,28 +33,25 @@ The "GPT" in NetflixGPT stands for Generative Pre-trained Transformer, a cutting
 ## Screenshots
 
 ### Sign In Page
-<img width="1434" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/961eeabd-364d-4592-ab78-0d36b12e973b">
+<img width="1434" alt="Sign In Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/961eeabd-364d-4592-ab78-0d36b12e973b">
 
 ### Movies (Home) Page
-<img width="1440" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/f2b5fe06-df24-4f8a-9586-c88477838e54">
+<img width="1440" alt="Movies (Home) Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/f2b5fe06-df24-4f8a-9586-c88477838e54">
 
-<img width="1440" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/c9cac757-e539-4fce-bdd1-08c1158f577e">
-
-
+<img width="1440" alt="Movies (Home) Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/c9cac757-e539-4fce-bdd1-08c1158f577e">
 
 ### TV Shows Page
-<img width="1437" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/c8769ea7-a480-4b5b-a241-927d568baa3e">
+<img width="1437" alt="TV Shows Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/c8769ea7-a480-4b5b-a241-927d568baa3e">
 
-<img width="1440" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/0c90d9b6-671c-4532-b046-0d9a0aaa1a0c">
-
-
+<img width="1440" alt="TV Shows Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/0c90d9b6-671c-4532-b046-0d9a0aaa1a0c">
 
 ### GPT Search Page
-<img width="1440" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/d5fc6089-2cc7-4136-ae64-214d2e6b8258">
+<img width="1440" alt="GPT Search Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/d5fc6089-2cc7-4136-ae64-214d2e6b8258">
 
-<img width="1434" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/a377dc2d-7163-47ef-843a-0207e0fccde2">
+<img width="1434" alt="GPT Search Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/a377dc2d-7163-47ef-843a-0207e0fccde2">
 
-
+### GPT Search Page with Language Chosen as German
+<img width="1440" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/d3c60023-e55d-4fec-821e-8dfd08f6f9d3">
 
 
 ## Getting Started
