@@ -7,11 +7,11 @@ import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+ <React.StrictMode>
   <Provider store={appStore}>
     <App />
   </Provider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
 
 
