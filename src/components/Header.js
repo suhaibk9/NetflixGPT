@@ -431,8 +431,8 @@ const Header = () => {
               {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
             </button>
           )}
-          <div className="relative group z-400000">
-            <div className="flex  items-center cursor-pointer">
+          <div className="relative group z-400000 ">
+            <div className="flex  items-center cursor-pointer ">
               <img
                 className="w-11 h-11 rounded"
                 src={ACCOUNT_ICON}
@@ -441,18 +441,18 @@ const Header = () => {
               <FaCaretDown className="ml-2 text-white" />
             </div>
             <div
-              className="absolute -right-20 mt-0 md:-right:15 md:mt-[5px] w-48 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
+              className="absolute -right-0 mt-0 md:-right-0 md:mt-[5px]  w-36 md:w-45 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
               style={{ background: 'rgba(0,0,0,0.7)' }}
             >
               <div
                 onClick={goToAccount}
-                className="px-4 py-2 hover:underline cursor-pointer text-white"
+                className="px-4 py-2 hover:underline cursor-pointer text-white "
               >
                 Account
               </div>
               <div
                 onClick={handleSignOut}
-                className="px-4 py-2 hover:underline cursor-pointer text-white"
+                className="px-4 py-2 hover:underline cursor-pointer text-white "
               >
                 Sign Out
               </div>
