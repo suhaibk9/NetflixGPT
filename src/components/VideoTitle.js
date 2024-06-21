@@ -24,7 +24,7 @@ const VideoTitle = ({ id, title, overview }) => {
   return (
     <div
       style={{ userSelect: 'none' }}
-      className="absolute translate-y-[200px] left-16 text-white max-w-xl z-50 "
+      className="absolute translate-y-[260px] md:translate-y-[200px] -translate-x-[15px] md:translate-x-0 left-16 text-white max-w-xl z-50 "
     >
       <h1 className="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
       <p className="text-lg md:text-xl mb-6">{overview}</p>
