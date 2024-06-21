@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addAiringTodayTv } from '../utils/tvSlice';
 import { API_OPTIONS } from '../utils/consants';
+import { useSelector } from 'react-redux';
 const useAiringToday = () => {
   const dispatch = useDispatch();
+  const airingTodayTv = useSelector((state) => state.tv.airingTodayTv);
   useEffect(() => {
     const airToday = async () => {
       const air = await fetch(
@@ -11,10 +13,10 @@ const useAiringToday = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      
+
       dispatch(addAiringTodayTv(airJson.results));
     };
-    airToday();
+    !airingTodayTv && airToday();
   }, []);
 };
 export default useAiringToday;

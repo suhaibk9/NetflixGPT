@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import useClearGPT from '../utils/useClearGPT';
 import { addUser } from '../utils/userSlice';
-import { PROFILE_AVATAR } from '../utils/consants';
+import { LOGIN_PAGE_IMAGE, PROFILE_AVATAR } from '../utils/consants';
 const Login = () => {
   useClearGPT();
   const dispatch = useDispatch();
@@ -114,7 +114,7 @@ const Login = () => {
       <Header />
       <div className="absolute inset-0 z-0">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/51c1d7f7-3179-4a55-93d9-704722898999/46378c44-9068-4001-a49b-e1f9ea788f5a/GB-en-20240610-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={LOGIN_PAGE_IMAGE}
           alt="Background"
           className="object-cover w-full h-full"
         />

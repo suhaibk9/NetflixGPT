@@ -92,7 +92,7 @@ const VideoContainer = () => {
     return null;
   }
 
-  const mainType = mediaType[1];
+  const mainType = mediaType[2];
 
   return (
     <div>

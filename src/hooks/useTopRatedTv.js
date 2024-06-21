@@ -18,8 +18,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTopRatedTv } from '../utils/tvSlice';
 import { API_OPTIONS } from '../utils/consants';
+import { useSelector } from 'react-redux';
 const useTopRatedTv = () => {
   const dispatch = useDispatch();
+  const topRatedTv = useSelector((state) => state.tv.topRatedTv);
   useEffect(() => {
     const onAir = async () => {
       const air = await fetch(
@@ -27,9 +29,9 @@ const useTopRatedTv = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      dispatch(addTopRatedTv(airJson.results));
+      !topRatedTv && dispatch(addTopRatedTv(airJson.results));
     };
-    onAir();
+   !topRatedTv && onAir();
   }, []);
 };
 export default useTopRatedTv;

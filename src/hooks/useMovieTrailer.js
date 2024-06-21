@@ -1,5 +1,3 @@
-
-
 //  import { useEffect } from 'react';
 // import { API_OPTIONS } from '../utils/consants';
 // import { useDispatch } from 'react-redux';
@@ -50,11 +48,12 @@ import { useDispatch } from 'react-redux';
 import { addTrailerVideo } from '../utils/moviesSlice';
 import { addTvTrailerId } from '../utils/tvSlice';
 import { useLocation } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 const useMovieTrailer = (movieId) => {
   const location = useLocation();
   const dispatch = useDispatch();
-
+  const tvTrailerId = useSelector((state) => state.tv.tvTrailerId);
+  const trailerVideo = useSelector((state) => state.movies.trailerVideo);
   const getTrailer = async (id, type) => {
     const url = `https://api.themoviedb.org/3/${type}/${id}/videos?language=en-US`;
 
@@ -72,8 +71,9 @@ const useMovieTrailer = (movieId) => {
       );
       video = teasers.length > 0 ? teasers[0] : null;
     }
-
-    return video;
+    if(!video)video=data.results[0];
+    
+    return video?video:null;
   };
 
   const fetchTrailer = async () => {
@@ -100,7 +100,9 @@ const useMovieTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    fetchTrailer();
+    if (location.pathname === '/browse' && !trailerVideo) fetchTrailer();
+    else if (location.pathname === '/tvshows' && !tvTrailerId) fetchTrailer();
+    // fetchTrailer();
   }, []);
 
   return null;

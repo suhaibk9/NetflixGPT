@@ -7,6 +7,8 @@ export const PROFILE_AVATAR =
   'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 export const ERROR_PAGE_IMAGE =
   'https://assets.nflxext.com/ffe/siteui/pages/errors/bg-lost-in-space.png';
+  export const LOGIN_PAGE_IMAGE =
+    'https://assets.nflxext.com/ffe/siteui/vlv3/51c1d7f7-3179-4a55-93d9-704722898999/46378c44-9068-4001-a49b-e1f9ea788f5a/GB-en-20240610-popsignuptwoweeks-perspective_alpha_website_large.jpg';
 // export const GPT_SEARCH_IMAGE =
 //   'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 export const GPT_SEARCH_IMAGE =

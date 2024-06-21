@@ -16,7 +16,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPopularTv } from '../utils/tvSlice';
 import { API_OPTIONS } from '../utils/consants';
+import { useSelector } from 'react-redux';
 const usePopularTv = () => {
+  const popularTv = useSelector((state) => state.tv.popularTv);
   const dispatch = useDispatch();
   useEffect(() => {
     const onAir = async () => {
@@ -25,10 +27,10 @@ const usePopularTv = () => {
         API_OPTIONS
       );
       const airJson = await air.json();
-      
-      dispatch(addPopularTv(airJson.results));
+
+       dispatch(addPopularTv(airJson.results));
     };
-    onAir();
+  !popularTv && onAir();
   }, []);
 };
 export default usePopularTv;
