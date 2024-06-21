@@ -38,7 +38,7 @@ const MediaDetails = () => {
               alt={isMovie ? media.title : media.name}
               className="w-80 h-auto rounded-lg shadow-lg object-cover"
             />
-            <div className="ml-8 flex-1">
+            <div className="ml-8 mt-2 md:mt-0 flex-1">
               <h1 className="text-4xl font-bold mb-4">
                 {isMovie ? media.title : media.name}
               </h1>
