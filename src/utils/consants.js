@@ -7,8 +7,10 @@ export const PROFILE_AVATAR =
   'https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 export const ERROR_PAGE_IMAGE =
   'https://assets.nflxext.com/ffe/siteui/pages/errors/bg-lost-in-space.png';
+// export const GPT_SEARCH_IMAGE =
+//   'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 export const GPT_SEARCH_IMAGE =
-  'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  'https://images.unsplash.com/photo-1610296669228-602fa827fc1f?q=80&w=2875&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 //TMDB Related Constants
 export const API_OPTIONS = {
   method: 'GET',

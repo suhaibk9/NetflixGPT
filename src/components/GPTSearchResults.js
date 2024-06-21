@@ -36,10 +36,10 @@ const GPTSearchResults = () => {
   const click = useSelector((state) => state.gpt.searchClicked);
   const gptSearchResults = useSelector((state) => state.gpt.gptSearchResults);
   const gptArray = useSelector((state) => state.gpt.gptArray);
-  const actualQuery= useSelector((state) => state.gpt.actualQuery);
+  const actualQuery = useSelector((state) => state.gpt.actualQuery);
   if (click) {
     return (
-      <div className="w-full bg-black">
+      <div className="relative z-11  bg-black opacity-76 mx-5 mb-5">
         <div className="flex flex-wrap justify-center p-5">
           {Array.from({ length: 20 }).map((_, index) => (
             <ShimmerCard key={index} />
@@ -48,20 +48,16 @@ const GPTSearchResults = () => {
       </div>
     );
   }
-
+  // bg-black opacity-50
   return (
-    <div className="w-full bg-black">
-      {gptSearchResults && gptArray && (
-        <div className="text-white mb-2 py-2 pl-6">
-          <h1 className="text-3xl font-bold mb-2">{`Showing Results for: ${actualQuery}`}</h1>
-        </div>
-      )}
+    <div className=" relative z-11  bg-black opacity-76 mx-5 mb-5">
+    
       {gptSearchResults && gptArray ? (
         gptArray.map((gpt, idx) => (
           <MovieList key={idx} title={gpt} movies={gptSearchResults[idx]} />
         ))
       ) : (
-        <div className="w-full bg-black min-h-screen"></div>
+        ''
       )}
     </div>
   );

@@ -41,33 +41,35 @@ const MovieCard = ({ movie }) => {
       location.pathname.includes('/browse') ||
       location.pathname.includes('/gptsearch');
   return (
-     <Link to={`/${isMovie ? 'movie' : 'tv'}/${movie.id}`}>
-    <div className="relative group w-48 p-1 mx-1 overflow-hidden  cursor-pointer">
-      <img
-        alt="Movie Poster"
-        src={`${POSTER_PATH_ORIGINAL}${movie.poster_path}`}
-        className="w-full h-full object-cover transition-transform duration-300 "
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity group-hover:border-white group-hover:border-[.5px] duration-300">
+    <Link to={`/${isMovie ? 'movie' : 'tv'}/${movie.id}`}>
+      <div className="relative group w-48 p-1 mx-1 overflow-hidden  cursor-pointer">
         <img
-          alt="Movie Backdrop"
-          src={`${BACKDROP_PATH_ORIGINAL}${movie.backdrop_path}`}
-          className="w-full h-[50%] object-cover"
+          alt="Movie Poster"
+          src={`${POSTER_PATH_ORIGINAL}${movie.poster_path}`}
+          className="w-full h-full object-cover transition-transform duration-300 "
         />
-        <div className=" absolute bottom-0 p-1 left-0 w-full h-[50%]  bg-black bg-opacity-80">
-          <h3 className="text-white text-lg font-bold">
-            {location.pathname === '/browse' ||
-            location.pathname === '/gptsearch'
-              ? movie.title
-              : movie.original_name}
-          </h3>
-          <p className="text-gray-300 text-sm line-clamp-2">{movie.overview}</p>
-          <div className="text-gray-400 text-sm mt-2">
-            {genreNames.join(' • ')}
+        <div className="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity group-hover:border-white group-hover:border-[.5px] duration-300">
+          <img
+            alt="Movie Backdrop"
+            src={`${BACKDROP_PATH_ORIGINAL}${movie.backdrop_path}`}
+            className="w-full h-[50%] object-cover"
+          />
+          <div className=" absolute bottom-0 p-1 left-0 w-full h-[50%]  bg-black bg-opacity-80">
+            <h3 className="text-white text-lg font-bold">
+              {location.pathname === '/browse' ||
+              location.pathname === '/gptsearch'
+                ? movie.title
+                : movie.original_name}
+            </h3>
+            <p className="text-gray-300 text-sm line-clamp-2">
+              {movie.overview}
+            </p>
+            <div className="text-gray-400 text-sm mt-2">
+              {genreNames.join(' • ')}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </Link>
   );
 };
