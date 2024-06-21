@@ -1,10 +1,10 @@
 # NetflixGPT
 
-NetflixGPT is a Netflix clone that fetches TV shows and movies from The TMDB API. It leverages Firebase for authentication to store user names and passwords and uses React Router DOM for routing. The app includes React Icons and React-Select for an enhanced UI/UX experience.
+NetflixGPT is a Netflix clone that fetches TV shows and movies from The TMDB API. It leverages Firebase for authentication to store user names and passwords and uses React Router DOM for routing. The app includes React Icons and React-Select for an enhanced UI/UX experience. The entire app is styled using Tailwind CSS for a responsive and modern design.
 
 ## Why GPT in NetflixGPT?
 
-The "GPT" in NetflixGPT stands for Generative Pre-trained Transformer, a cutting-edge AI model developed by OpenAI. This integration allows the app to provide intelligent movie recommendations directly within the app, enhancing the user experience beyond traditional recommendation systems.
+The "GPT" in NetflixGPT stands for Generative Pre-trained Transformer, an advanced AI model developed by OpenAI. This integration allows the app to provide intelligent movie recommendations directly within the app, enhancing the user experience beyond traditional recommendation systems.
 
 ## Features
 
@@ -24,11 +24,7 @@ The "GPT" in NetflixGPT stands for Generative Pre-trained Transformer, a cutting
 - **React Router DOM**: For routing.
 - **React Icons**: For icons.
 - **React-Select**: For customizable select inputs.
-
-## Links
-
-- **LinkedIn**: [Suhaib Khan](https://www.linkedin.com/in/suhaibk9/)
-- **Live URL**: [NetflixGPT](https://netflixgpt-react-front.vercel.app/)
+- **Tailwind CSS**: For styling the app.
 
 ## Screenshots
 
@@ -51,28 +47,57 @@ The "GPT" in NetflixGPT stands for Generative Pre-trained Transformer, a cutting
 <img width="1434" alt="GPT Search Page" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/a377dc2d-7163-47ef-843a-0207e0fccde2">
 
 ### GPT Search Page with Language Chosen as German
-<img width="1440" alt="image" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/d3c60023-e55d-4fec-821e-8dfd08f6f9d3">
+<img width="1440" alt="GPT Search Page with Language Chosen as German" src="https://github.com/suhaibk9/NetflixGPT/assets/19365397/d3c60023-e55d-4fec-821e-8dfd08f6f9d3">
 
+## Routing
 
-## Getting Started
+- `/` - Login and signup
+- `/browse` - Home page and movies section
+- `/tvshows` - TV shows section
+- `/account` - Account section
+- `/gptsearch` - GPT search section
+- `/movie/:tmdbidofmovie` - Movie details page
+- `/tv/:tmdbidoftv` - TV show details page
 
-1. Clone the repository.
-2. Install dependencies: `npm install`
-3. Run the app: `npm start`
+## File Structure
 
-## Firebase Configuration
+```
+netflix-gpt
+│   README.md
+│   node_modules
+│   package.json
+│   public
+│   tailwind.config.js
+│
+└───src
+    │   App.js
+    │   App.css
+    │   index.js
+    │   reportWebVitals.js
+    │   setupTests.js
+    │
+    ├───components
+    │   │   Account.js
+    │   │   Browse.js
+    │   │   GPTSearch.js
+    │   │   ...
+    │
+    ├───hooks
+    │   │   useGenresList.js
+    │   │   useMediaDetails.js
+    │   │   ...
+    │
+    └───utils
+        │   appStore.js
+        │   firebase.js
+        │   gptSlice.js
+        │   ...
+```
 
-1. Set up a Firebase project.
-2. Add your Firebase credentials to the environment variables.
+## Links
 
-## TMDB API Configuration
-
-1. Sign up on [TMDB](https://www.themoviedb.org/) and get an API key.
-2. Add your TMDB API key to the environment variables.
-
-## OpenAI GPT-3.5 Configuration
-
-1. Sign up on [OpenAI](https://www.openai.com/) and get an API key.
-2. Add your OpenAI API key to the environment variables.
+- **Live URL**: [NetflixGPT](https://netflixgpt-react-front.vercel.app/)
+- **LinkedIn**: [Suhaib Khan](https://www.linkedin.com/in/suhaibk9/)
+- **Email**: [suhaib0900@gmail.com](mailto:suhaib0900@gmail.com)
 
 Enjoy your NetflixGPT experience!
