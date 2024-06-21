@@ -422,7 +422,7 @@ const GPTSearchResults = () => {
   }
   // bg-black opacity-50
   return (
-    <div className=" relative z-110000  bg-black opacity-91 mx-4 md:mx-5 mb-5 overflow-hidden">
+    <div className=" relative z-110000  bg-black opacity-91 mx-4 md:mx-5 mb-5 overflow-hidden -translate-y-14 md:translate-y-0">
       {gptSearchResults && gptArray
         ? gptArray.map((gpt, idx) => (
             <MovieList key={idx} title={gpt} movies={gptSearchResults[idx]} />

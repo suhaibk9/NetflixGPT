@@ -72,7 +72,7 @@ const GPTSearchBar = () => {
   };
 
   return (
-    <div className="h-[95vh] md:h-[60vh] w-[100vw]">
+    <div className="h-[90vh] md:h-[60vh] w-[100vw]">
       <div className="flex flex-col items-center justify-center h-full relative z-9">
         <h1
           className="text-5xl font-bold text-white mb-8 text-center select-none"
