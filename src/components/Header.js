@@ -403,7 +403,7 @@ const Header = () => {
         )}
       </div>
       {user && (
-        <div className="flex items-center space-x-4  sm:flex-col md:flex-row">
+        <div className="flex  items-center space-x-4  sm:flex-col md:flex-row">
           {isGptSearch && (
             <div className="flex items-center">
               <Select
@@ -431,8 +431,8 @@ const Header = () => {
               {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
             </button>
           )}
-          <div className="relative group z-40">
-            <div className="flex items-center cursor-pointer">
+          <div className="relative group z-400000">
+            <div className="flex  items-center cursor-pointer">
               <img
                 className="w-11 h-11 rounded"
                 src={ACCOUNT_ICON}
@@ -441,7 +441,7 @@ const Header = () => {
               <FaCaretDown className="ml-2 text-white" />
             </div>
             <div
-              className="absolute right-0 mt-2 w-48 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
+              className="absolute -right-20 mt-0 md:-right:15 md:mt-[5px] w-48 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
               style={{ background: 'rgba(0,0,0,0.7)' }}
             >
               <div
