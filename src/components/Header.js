@@ -19,7 +19,11 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   const isGptSearch = useSelector((state) => state.gpt.isGptSearch);
   const selectedLang = useSelector((state) => state.config.lang);
-if(location.pathname === '/' && user)navigate('/browse')
+useEffect(() => {
+  if (location.pathname === '/' && user) {
+    navigate('/browse');
+  }
+}, [location.pathname, user, navigate]);
   const goToAccount = () => {
     navigate('/account');
   };

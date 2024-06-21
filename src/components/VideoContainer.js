@@ -98,7 +98,7 @@ const VideoContainer = () => {
     <div>
       
       <VideoTitle
-      key={mainType.id}
+      
       id={mainType.id}
         title={
           isLocationBrowse ? mainType.original_title : mainType.original_name
@@ -106,7 +106,7 @@ const VideoContainer = () => {
         overview={mainType.overview}
         
       />
-      <VideoBackground key={mainType.id} movieId={mainType.id} />
+      <VideoBackground  movieId={mainType.id} />
     </div>
   );
 };
