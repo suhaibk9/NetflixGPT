@@ -19,15 +19,25 @@ const useMediaDetails = (id, isMovie) => {
         API_OPTIONS
       );
       const trailerData = await trailerRes.json();
+
+      console.log('Trailer Data', trailerData);
       let trailer = trailerData.results.find(
-        (video) => video.type === 'Trailer' && video.site === 'YouTube'
+        (video) =>
+          video.type === 'Trailer' &&
+          (video.name === 'YouTube' || video.site === 'YouTube')
       );
       if (!trailer) {
         trailer = trailerData.results.find(
-          (video) => video.type === 'Teaser' && video.site === 'YouTube'
+          (video) =>
+            video.type === 'Teaser' &&
+            (video.name === 'YouTube' || video.site === 'YouTube')
         );
       }
-      addTrailerId(trailer ? trailer.key : null);
+      if(!trailer){
+        trailer=trailerData.results[0];
+      }
+      dispatch(addTrailerId(trailer ? trailer.key : null));
+      console.log("Final Trailer",trailer.key);
     } catch (error) {
       console.error('Failed to fetch media details or trailer', error);
     }

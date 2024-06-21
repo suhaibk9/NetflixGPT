@@ -21,9 +21,7 @@ const gptSlice = createSlice({
     setGptSearchResults: (state, action) => {
       state.gptSearchResults = action.payload;
     },
-    setGptArray: (state, action) => {
-      state.gptArray = action.payload;
-    },
+
     setActualQuery: (state, action) => {
       state.actualQuery = action.payload;
     },
@@ -35,6 +33,6 @@ export const {
   setGptSearchResults,
   setGptArray,
   setGptSearchClicked,
-    setActualQuery,
+  setActualQuery,
 } = gptSlice.actions;
 export default gptSlice.reducer;

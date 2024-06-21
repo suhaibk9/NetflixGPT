@@ -9,6 +9,7 @@
 // const Account = () => {
 //   const user = useSelector((state) => state.user);
 //   const navigate = useNavigate();
+// import useClearGPT from '../utils/useClearGPT';
 // useClearGPT();
 //   const handleBackToNetflix = () => {
 //     navigate('/browse');
@@ -91,6 +92,8 @@
 // };
 
 // export default Account;
+import useClearGPT from '../utils/useClearGPT';
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -98,16 +101,17 @@ import Header from './Header';
 import { FaUserCircle } from 'react-icons/fa';
 import { ClipLoader } from 'react-spinners';
 import { FaArrowLeft } from 'react-icons/fa';
-import useClearGPT from '../utils/useClearGPT';
+
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { addUser, removeUser } from '../utils/userSlice';
 
 const Account = () => {
+  useClearGPT();
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useClearGPT();
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {

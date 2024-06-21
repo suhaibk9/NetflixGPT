@@ -188,16 +188,16 @@ useEffect(() => {
               />
             </div>
           )}
-          {location.pathname !== '/account' &&
-            !location.pathname.includes('/movie') &&
-            !location.pathname.includes('/tv') && (
-              <button
-                onClick={handleGptSearchClick}
-                className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
-              >
-                {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
-              </button>
-            )}
+          {(location.pathname === '/tvshows' ||
+            location.pathname === '/browse' ||
+            location.pathname === '/gptsearch') && (
+            <button
+              onClick={handleGptSearchClick}
+              className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
+            >
+              {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
+            </button>
+          )}
           <div className="relative group z-40">
             <div className="flex items-center cursor-pointer">
               <img

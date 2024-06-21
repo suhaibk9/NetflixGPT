@@ -10,9 +10,11 @@ import {
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import useClearGPT from '../utils/useClearGPT';
 import { addUser } from '../utils/userSlice';
 import { PROFILE_AVATAR } from '../utils/consants';
 const Login = () => {
+  useClearGPT();
   const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
   const emailRef = useRef(null);

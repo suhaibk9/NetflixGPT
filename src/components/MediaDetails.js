@@ -17,6 +17,7 @@ const MediaDetails = () => {
   useMediaDetails(id, isMovie);
   const media = useSelector((state) => state.media.media);
   const trailerId = useSelector((state) => state.media.trailerId);
+  console.log("Trailer ID OF MOVIE",trailerId);
   if ( !media) {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
