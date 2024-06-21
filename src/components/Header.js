@@ -57,7 +57,7 @@
 //             photoURL: user.photoURL,
 //           })
 //         );
-        
+
 //       } else {
 //         dispatch(removeUser());
 //          navigate('/');
@@ -253,6 +253,18 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   const isGptSearch = useSelector((state) => state.gpt.isGptSearch);
   const selectedLang = useSelector((state) => state.config.lang);
+  const [isBigScreen, setIsBigScreen] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsBigScreen(window.innerWidth >= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   useEffect(() => {
     if (location.pathname === '/' && user) {
       navigate('/browse');
@@ -431,33 +443,38 @@ const Header = () => {
               {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask GPT"}
             </button>
           )}
-          <div className="relative group z-400000 ">
-            <div className="flex  items-center cursor-pointer ">
-              <img
-                className="w-11 h-11 rounded"
-                src={ACCOUNT_ICON}
-                alt="Profile"
-              />
-              <FaCaretDown className="ml-2 text-white" />
-            </div>
-            <div
-              className="absolute -right-0 mt-0 md:-right-0 md:mt-[5px]  w-36 md:w-45 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
-              style={{ background: 'rgba(0,0,0,0.7)' }}
-            >
+          {(isBigScreen ||
+            (!isBigScreen && location.pathname !== '/account')) && (
+            <div className="relative group z-400000 ">
               <div
-                onClick={goToAccount}
-                className="px-4 py-2 hover:underline cursor-pointer text-white "
+                className="flex  items-center cursor-pointer  "
               >
-                Account
+                <img
+                  className="w-11 h-11 rounded"
+                  src={ACCOUNT_ICON}
+                  alt="Profile"
+                />
+                <FaCaretDown className="ml-2 text-white" />
               </div>
               <div
-                onClick={handleSignOut}
-                className="px-4 py-2 hover:underline cursor-pointer text-white "
+                className="absolute -right-0 mt-0 md:-right-0 md:mt-[5px]  w-36 md:w-45 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
+                style={{ background: 'rgba(0,0,0,0.7)' }}
               >
-                Sign Out
+                <div
+                  onClick={goToAccount}
+                  className="px-4 py-2 hover:underline cursor-pointer text-white "
+                >
+                  Account
+                </div>
+                <div
+                  onClick={handleSignOut}
+                  className="px-4 py-2 hover:underline cursor-pointer text-white "
+                >
+                  Sign Out
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>

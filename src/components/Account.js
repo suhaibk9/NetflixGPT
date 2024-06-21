@@ -94,7 +94,7 @@
 // export default Account;
 import useClearGPT from '../utils/useClearGPT';
 
-import React, { useEffect } from 'react';
+import React, { useEffect ,useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
@@ -111,7 +111,18 @@ const Account = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+    const [isBigScreen, setIsBigScreen] = useState(window.innerWidth >= 768);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsBigScreen(window.innerWidth >= 768);
+      };
+      window.addEventListener('resize', handleResize);
+      handleResize();
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -148,8 +159,8 @@ const Account = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
-      <div className="flex min-h-screen pt-20">
-        <div className="w-1/4 flex items-center justify-center p-4">
+      <div className="flex flex-col md:flex-row min-h-screen pt-20 ">
+        <div className="w-3/5  md:w-1/4 self-center md:self-auto  md:mt-0 flex items-center justify-center p-4">
           <button
             onClick={handleBackToNetflix}
             className="bg-red-600 text-white py-2 px-4 rounded flex items-center hover:bg-red-700 transition duration-300"
@@ -158,7 +169,7 @@ const Account = () => {
             Back To Netflix
           </button>
         </div>
-        <div className="w-3/4 flex flex-col items-center justify-center p-8">
+        <div className="w-5/6  self-center md:self-auto  flex flex-col items-center justify-center p-8">
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-sm w-full">
             <div className="flex items-center mb-6">
               {user.photoURL ? (
