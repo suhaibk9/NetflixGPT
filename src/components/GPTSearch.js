@@ -24,7 +24,7 @@ const GPTSearch = () => {
   return (
     <div>
       <div
-        className="fixed inset-0 z-0 bg-cover bg-center "
+        className="fixed inset-0 z-0 bg-cover object-cover bg-center "
         style={{
           backgroundImage: `url(${GPT_SEARCH_IMAGE})`,
           backgroundSize: 'cover',

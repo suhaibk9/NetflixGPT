@@ -72,7 +72,7 @@ const GPTSearchBar = () => {
   };
 
   return (
-    <div className="h-[60vh]">
+    <div className="h-[100vh] md:h-[60vh] w-[100vw]">
       <div className="flex flex-col items-center justify-center h-full relative z-9">
         <h1
           className="text-5xl font-bold text-white mb-8 text-center select-none"
@@ -85,7 +85,7 @@ const GPTSearchBar = () => {
             ref={inputRef}
             type="text"
             placeholder={lang[language].gptSearchPlaceholder}
-            className="px-4 py-3 w-[40rem] text-black text-lg rounded-l-md focus:outline-none transition-all duration-300 border-2 border-transparent focus:border-black"
+            className="px-4 py-3 w-[15rem] sm:w-[20rem] md:w-[40rem] text-black text-lg rounded-l-md focus:outline-none transition-all duration-300 border-2 border-transparent focus:border-black"
             onFocus={() => setIsTyping(true)}
             onBlur={() => setIsTyping(false)}
           />
