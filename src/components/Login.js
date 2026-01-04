@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Header from './Header';
-import { useRef } from 'react';
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
 import {
@@ -9,10 +8,11 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useClearGPT from '../utils/useClearGPT';
 import { addUser } from '../utils/userSlice';
 import { LOGIN_PAGE_IMAGE, PROFILE_AVATAR } from '../utils/consants';
+
 const Login = () => {
   useClearGPT();
   const dispatch = useDispatch();
@@ -21,22 +21,20 @@ const Login = () => {
   const passwordRef = useRef(null);
   const nameRef = useRef(null);
   const [formError, setFormError] = useState('');
+  const navigate = useNavigate();
+
   const cleanInput = () => {
     if (nameRef.current) nameRef.current.value = '';
     emailRef.current.value = '';
     passwordRef.current.value = '';
   };
-  const navigate = useNavigate();
+
   const handleToggle = () => {
     cleanInput();
     setFormError('');
     setIsSignIn(!isSignIn);
   };
-  //   useEffect(() => {
-  //     if (!useSelector((state) => state.user)) {
-  //       cleanInput();
-  //     }
-  //   }, [useSelector((state) => state.user)]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError('');
@@ -44,12 +42,12 @@ const Login = () => {
     const password = passwordRef.current.value;
     const name = nameRef.current ? nameRef.current.value : '';
     const validationError = checkValidData(email, password, isSignIn, name);
+
     if (validationError) {
       setFormError(validationError);
     } else {
       setFormError('');
       if (!isSignIn) {
-        //Sign Up
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
@@ -58,7 +56,6 @@ const Login = () => {
               photoURL: PROFILE_AVATAR,
             })
               .then(() => {
-                //Trying out Direct Update
                 dispatch(
                   addUser({
                     uid: user.uid,
@@ -85,10 +82,8 @@ const Login = () => {
             }
           });
       } else {
-        //Sign In
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            const user = userCredential.user;
             cleanInput();
             navigate('/browse');
           })
@@ -109,6 +104,7 @@ const Login = () => {
       }
     }
   };
+
   return (
     <div className="relative min-h-screen bg-black">
       <Header />
@@ -158,7 +154,7 @@ const Login = () => {
           >
             {isSignIn ? 'Sign In' : 'Sign Up'}
           </button>
-          <div className=" mb-4">
+          <div className="mb-4">
             {isSignIn ? (
               <>
                 <span

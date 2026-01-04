@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from './Header';
 import VideoContainer from './VideoContainer';
 import MoviesContainer from './MoviesContainer';
-import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
+import useAllMovies from '../hooks/useAllMovies';
 import useGenresList from '../hooks/useGenresList';
-import usePopularMovies from '../hooks/usePopularMovies';
-import useTopRatedMovies from '../hooks/useTopRatedMovies';
-import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import useClearGPT from '../utils/useClearGPT';
+
 const Browse = () => {
-    useClearGPT();
-    useNowPlayingMovies();
-    usePopularMovies();
-    useTopRatedMovies();
-    useUpcomingMovies();
-    useGenresList();
+  useClearGPT();
+  // Single hook that fetches all movie data simultaneously
+  useAllMovies();
+  useGenresList();
+
   return (
     <div className="w-screen ">
       <Header />

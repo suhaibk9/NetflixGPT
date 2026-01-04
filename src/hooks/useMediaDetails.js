@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { API_OPTIONS } from '../utils/consants';
 import { useDispatch } from 'react-redux';
 import { addMedia, addTrailerId } from '../utils/mediaSlice';
@@ -13,14 +13,13 @@ const useMediaDetails = (id, isMovie) => {
       const data = await res.json();
       dispatch(addMedia(data));
       const trailerRes = await fetch(
-        `https://api.themoviedb.org/3/${
-          isMovie ? 'movie' : 'tv'
+        `https://api.themoviedb.org/3/${isMovie ? 'movie' : 'tv'
         }/${id}/videos?language=en-US`,
         API_OPTIONS
       );
       const trailerData = await trailerRes.json();
 
-      console.log('Trailer Data', trailerData);
+
       let trailer = trailerData.results.find(
         (video) =>
           video.type === 'Trailer' &&
@@ -33,11 +32,11 @@ const useMediaDetails = (id, isMovie) => {
             (video.name === 'YouTube' || video.site === 'YouTube')
         );
       }
-      if(!trailer){
-        trailer=trailerData.results[0];
+      if (!trailer) {
+        trailer = trailerData.results[0];
       }
       dispatch(addTrailerId(trailer ? trailer.key : null));
-      console.log("Final Trailer",trailer.key);
+
     } catch (error) {
       console.error('Failed to fetch media details or trailer', error);
     }

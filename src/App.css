@@ -26,6 +26,13 @@
   scrollbar-width: none;
 }
 
+/* Hide scrollbar for movie list containers */
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 .group:hover .group-hover\\:opacity-100 {
   opacity: 1;
 }
