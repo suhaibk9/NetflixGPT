@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import MovieList from './MovieList';
-import { FaRobot, FaMagic } from 'react-icons/fa';
+import React from "react";
+import { useSelector } from "react-redux";
+import MovieList from "./MovieList";
+import { FaRobot, FaMagic } from "react-icons/fa";
 
 const AIThinkingLoader = () => {
   return (
@@ -10,10 +10,16 @@ const AIThinkingLoader = () => {
       <div className="relative mb-8">
         {/* Outer pulsing rings */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-32 h-32 rounded-full border-2 border-red-500/30 animate-ping" style={{ animationDuration: '2s' }} />
+          <div
+            className="w-32 h-32 rounded-full border-2 border-red-500/30 animate-ping"
+            style={{ animationDuration: "2s" }}
+          />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-24 h-24 rounded-full border-2 border-red-500/50 animate-ping" style={{ animationDuration: '1.5s', animationDelay: '0.5s' }} />
+          <div
+            className="w-24 h-24 rounded-full border-2 border-red-500/50 animate-ping"
+            style={{ animationDuration: "1.5s", animationDelay: "0.5s" }}
+          />
         </div>
 
         {/* Center icon */}
@@ -44,9 +50,18 @@ const AIThinkingLoader = () => {
 
       {/* Animated dots */}
       <div className="flex gap-2 mt-6">
-        <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-        <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-        <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+        <div
+          className="w-3 h-3 bg-red-500 rounded-full animate-bounce"
+          style={{ animationDelay: "0ms" }}
+        />
+        <div
+          className="w-3 h-3 bg-red-500 rounded-full animate-bounce"
+          style={{ animationDelay: "150ms" }}
+        />
+        <div
+          className="w-3 h-3 bg-red-500 rounded-full animate-bounce"
+          style={{ animationDelay: "300ms" }}
+        />
       </div>
 
       {/* Subtle movie reel decoration */}
@@ -56,8 +71,8 @@ const AIThinkingLoader = () => {
             key={i}
             className="w-16 h-24 bg-gradient-to-b from-gray-700 to-gray-800 rounded-lg"
             style={{
-              animation: 'pulse 2s ease-in-out infinite',
-              animationDelay: `${i * 0.2}s`
+              animation: "pulse 2s ease-in-out infinite",
+              animationDelay: `${i * 0.2}s`,
             }}
           />
         ))}
@@ -69,7 +84,6 @@ const AIThinkingLoader = () => {
 const GPTSearchResults = () => {
   const click = useSelector((state) => state.gpt.searchClicked);
   const gptSearchResults = useSelector((state) => state.gpt.gptSearchResults);
-  const gptArray = useSelector((state) => state.gpt.gptArray);
 
   if (click) {
     return (
@@ -85,8 +99,10 @@ const GPTSearchResults = () => {
   // Aggregate only the best matches (first result) from each query
   const bestMatches = gptSearchResults
     ? gptSearchResults
-      .map((results, index) => results && results.length > 0 ? results[0] : null)
-      .filter(movie => movie !== null)
+        .map((results, index) =>
+          results && results.length > 0 ? results[0] : null,
+        )
+        .filter((movie) => movie !== null)
     : [];
 
   if (!bestMatches || bestMatches.length === 0) return null;

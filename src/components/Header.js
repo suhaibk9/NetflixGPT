@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { signOut, onAuthStateChanged } from 'firebase/auth';
-import { FaCaretDown } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
-import { auth } from '../utils/firebase';
-import { removeUser, addUser } from '../utils/userSlice';
-import { setGptSearch } from '../utils/gptSlice';
-import { ACCOUNT_ICON, NETFLIX_LOGO, LANGUAGES } from '../utils/consants';
-import Select from 'react-select';
-import { changeLanguage } from '../utils/configSlice';
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { FaCaretDown } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../utils/firebase";
+import { removeUser, addUser } from "../utils/userSlice";
+import { setGptSearch } from "../utils/gptSlice";
+import { ACCOUNT_ICON, NETFLIX_LOGO, LANGUAGES } from "../utils/consants";
+import Select from "react-select";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const location = useLocation();
@@ -23,30 +23,30 @@ const Header = () => {
     const handleResize = () => {
       setIsBigScreen(window.innerWidth >= 768);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/' && user) {
-      navigate('/browse');
+    if (location.pathname === "/" && user) {
+      navigate("/browse");
     }
   }, [location.pathname, user, navigate]);
 
   const goToAccount = () => {
-    navigate('/account');
+    navigate("/account");
   };
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        navigate('/');
+        navigate("/");
       })
       .catch((error) => {
-        navigate('/error');
+        navigate("/error");
       });
   };
 
@@ -59,18 +59,18 @@ const Header = () => {
             email: user.email,
             displayName: user.displayName,
             photoURL: user.photoURL,
-          })
+          }),
         );
       } else {
         dispatch(removeUser());
-        navigate('/');
+        navigate("/");
       }
     });
     return () => subscribe();
-  }, []);
+  }, [dispatch, navigate]);
 
   useEffect(() => {
-    if (location.pathname === '/gptsearch') {
+    if (location.pathname === "/gptsearch") {
       dispatch(setGptSearch(true));
     } else {
       dispatch(setGptSearch(false));
@@ -79,9 +79,9 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     if (isGptSearch) {
-      navigate('/browse');
+      navigate("/browse");
     } else {
-      navigate('/gptsearch');
+      navigate("/gptsearch");
     }
   };
 
@@ -93,50 +93,50 @@ const Header = () => {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
-      border: '1px solid white',
-      color: 'white',
-      fontSize: '1rem',
-      fontWeight: 'bold',
-      width: 'auto',
-      minWidth: '180px',
-      borderRadius: state.menuIsOpen ? '4px 4px 0 0' : '4px',
-      boxShadow: 'none',
-      '&:hover': {
-        borderColor: 'white',
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      border: "1px solid white",
+      color: "white",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      width: "auto",
+      minWidth: "180px",
+      borderRadius: state.menuIsOpen ? "4px 4px 0 0" : "4px",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "white",
       },
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: 'white',
+      color: "white",
     }),
     menu: (provided) => ({
       ...provided,
-      backgroundColor: 'rgba(0, 0, 0, 0.9)',
-      borderRadius: '0 0 4px 4px',
-      marginTop: '0',
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+      borderRadius: "0 0 4px 4px",
+      marginTop: "0",
     }),
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected
-        ? 'rgba(255, 255, 255, 0.2)'
-        : 'transparent',
-      color: 'white',
-      '&:hover': {
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        ? "rgba(255, 255, 255, 0.2)"
+        : "transparent",
+      color: "white",
+      "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.2)",
       },
     }),
     dropdownIndicator: (provided) => ({
       ...provided,
-      color: 'white',
-      '&:hover': {
-        color: 'white',
+      color: "white",
+      "&:hover": {
+        color: "white",
       },
     }),
     indicatorSeparator: () => ({}),
     placeholder: (provided) => ({
       ...provided,
-      color: 'white',
+      color: "white",
     }),
   };
 
@@ -148,20 +148,20 @@ const Header = () => {
             className="w-44 cursor-pointer"
             src={NETFLIX_LOGO}
             alt="Logo"
-            onClick={() => navigate('/browse')}
+            onClick={() => navigate("/browse")}
           />
         </Link>
-        {user && location.pathname !== '/account' && !isGptSearch && (
+        {user && location.pathname !== "/account" && !isGptSearch && (
           <div className="flex justify-center mb-3 md:mb-0 -translate-x-3 md:-translate-x-0 space-x-4 ml-10">
             <button
-              onClick={() => navigate('/browse')}
-              className={`text-white text-lg ${location.pathname === '/browse' ? 'font-bold' : 'font-normal'}`}
+              onClick={() => navigate("/browse")}
+              className={`text-white text-lg ${location.pathname === "/browse" ? "font-bold" : "font-normal"}`}
             >
               Movies
             </button>
             <button
-              onClick={() => navigate('/tvshows')}
-              className={`text-white text-lg ${location.pathname === '/tvshows' ? 'font-bold' : 'font-normal'}`}
+              onClick={() => navigate("/tvshows")}
+              className={`text-white text-lg ${location.pathname === "/tvshows" ? "font-bold" : "font-normal"}`}
             >
               TV Shows
             </button>
@@ -174,7 +174,7 @@ const Header = () => {
             <div className="flex items-center">
               <Select
                 value={languageOptions.find(
-                  (option) => option.value === selectedLang
+                  (option) => option.value === selectedLang,
                 )}
                 onChange={(selectedOption) =>
                   dispatch(changeLanguage(selectedOption.value))
@@ -187,46 +187,46 @@ const Header = () => {
               />
             </div>
           )}
-          {(location.pathname === '/tvshows' ||
-            location.pathname === '/browse' ||
-            location.pathname === '/gptsearch') && (
-              <button
-                onClick={handleGptSearchClick}
-                className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
-              >
-                {isGptSearch ? 'Back to Netflix' : "Can't Decide? Ask AI"}
-              </button>
-            )}
+          {(location.pathname === "/tvshows" ||
+            location.pathname === "/browse" ||
+            location.pathname === "/gptsearch") && (
+            <button
+              onClick={handleGptSearchClick}
+              className="bg-white bg-opacity-10 text-white border border-white py-2 px-4 rounded font-semibold hover:bg-opacity-20 transition duration-300"
+            >
+              {isGptSearch ? "Back to Netflix" : "Can't Decide? Ask AI"}
+            </button>
+          )}
           {(isBigScreen ||
-            (!isBigScreen && location.pathname !== '/account')) && (
-              <div className="relative group z-400000">
-                <div className="flex items-center cursor-pointer">
-                  <img
-                    className="w-11 h-11 rounded"
-                    src={ACCOUNT_ICON}
-                    alt="Profile"
-                  />
-                  <FaCaretDown className="ml-2 text-white" />
+            (!isBigScreen && location.pathname !== "/account")) && (
+            <div className="relative group z-400000">
+              <div className="flex items-center cursor-pointer">
+                <img
+                  className="w-11 h-11 rounded"
+                  src={ACCOUNT_ICON}
+                  alt="Profile"
+                />
+                <FaCaretDown className="ml-2 text-white" />
+              </div>
+              <div
+                className="absolute -right-0 mt-0 md:-right-0 md:mt-[5px] w-36 md:w-45 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
+                style={{ background: "rgba(0,0,0,0.7)" }}
+              >
+                <div
+                  onClick={goToAccount}
+                  className="px-4 py-2 hover:underline cursor-pointer text-white"
+                >
+                  Account
                 </div>
                 <div
-                  className="absolute -right-0 mt-0 md:-right-0 md:mt-[5px] w-36 md:w-45 rounded-lg shadow-lg py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 transform translate-y-2 z-20"
-                  style={{ background: 'rgba(0,0,0,0.7)' }}
+                  onClick={handleSignOut}
+                  className="px-4 py-2 hover:underline cursor-pointer text-white"
                 >
-                  <div
-                    onClick={goToAccount}
-                    className="px-4 py-2 hover:underline cursor-pointer text-white"
-                  >
-                    Account
-                  </div>
-                  <div
-                    onClick={handleSignOut}
-                    className="px-4 py-2 hover:underline cursor-pointer text-white"
-                  >
-                    Sign Out
-                  </div>
+                  Sign Out
                 </div>
               </div>
-            )}
+            </div>
+          )}
         </div>
       )}
     </div>
